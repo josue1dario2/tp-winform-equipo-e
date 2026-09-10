@@ -56,5 +56,34 @@ namespace TP_WinForm_equipo_e
 
         }
 
+
+        public void Agregar(Marca nueva)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+
+                Conexion.ConnectionString = "server=.\\SQLEXPRESS;database=CATALOGO_P3_DB;integrated security=true";
+
+                SqlCommand Comando = new SqlCommand();
+
+                Comando.CommandType = System.Data.CommandType.Text;
+
+                Comando.Connection = Conexion;
+
+                Comando.CommandText = "INSERT INTO MARCAS (Descripcion) VALUES (@descripcion);";
+
+                Comando.Parameters.AddWithValue("@descripcion", nueva.Descripcion);
+
+                Conexion.Open();
+
+                Comando.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+            
+        }
     }
 }
