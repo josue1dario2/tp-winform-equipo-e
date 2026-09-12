@@ -12,9 +12,10 @@ namespace TP_WinForm_equipo_e
         public List<Marca> Listar()
 
         {
+                SqlConnection Conexion = new SqlConnection();
             try
             {
-                SqlConnection Conexion = new SqlConnection();
+
 
                 Conexion.ConnectionString = "server=.\\SQLEXPRESS;database=CATALOGO_P3_DB;integrated security=true";
 
@@ -47,10 +48,14 @@ namespace TP_WinForm_equipo_e
                 return ListaDeMarcas;
             }
 
-             catch 
+            catch
             {
 
                 throw;
+            }
+            finally
+            { 
+            Conexion.Close();
             }
 
 
