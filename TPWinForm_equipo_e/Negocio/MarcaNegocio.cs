@@ -13,7 +13,7 @@ namespace Negocio
         public List<Marca> Listar()
 
         {
-                SqlConnection Conexion = new SqlConnection();
+            SqlConnection Conexion = new SqlConnection();
             try
             {
 
@@ -55,8 +55,8 @@ namespace Negocio
                 throw;
             }
             finally
-            { 
-            Conexion.Close();
+            {
+                Conexion.Close();
             }
 
 
@@ -89,7 +89,66 @@ namespace Negocio
             {
                 throw;
             }
-            
+
+        }
+
+        public void Modificar(Marca marca)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+
+                Conexion.ConnectionString = "server=.\\SQLEXPRESS;database=CATALOGO_P3_DB;integrated security=true";
+
+                SqlCommand Comando = new SqlCommand();
+
+                Comando.CommandType = System.Data.CommandType.Text;
+
+                Comando.Connection = Conexion;
+
+                Comando.CommandText = "UPDATE MARCAS SET Descripcion = @descripcion WHERE Id = @id;";
+
+                Comando.Parameters.AddWithValue("@descripcion", marca.Descripcion);
+                Comando.Parameters.AddWithValue("@id", marca.Id);
+
+                Conexion.Open();
+
+                Comando.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
+
+        public void Eliminar(int id)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+
+                Conexion.ConnectionString = "server=.\\SQLEXPRESS;database=CATALOGO_P3_DB;integrated security=true";
+
+                SqlCommand Comando = new SqlCommand();
+
+                Comando.CommandType = System.Data.CommandType.Text;
+
+                Comando.Connection = Conexion;
+
+                Comando.CommandText = "DELETE FROM MARCAS WHERE Id = @id;";
+
+                Comando.Parameters.AddWithValue("@id", id);
+
+                Conexion.Open();
+
+                Comando.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+
         }
     }
 }
