@@ -68,6 +68,19 @@ namespace negocio
                 lector.Close();
             conexion.Close();
         }
+        public int obtenerId()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return Convert.ToInt32(comando.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
     }
 }

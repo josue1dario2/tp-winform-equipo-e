@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,11 +41,22 @@
             this.dgvArticulos.Size = new System.Drawing.Size(776, 223);
             this.dgvArticulos.TabIndex = 0;
             // 
+            // btnAgregarArticulo
+            // 
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(48, 357);
+            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
+            this.btnAgregarArticulo.Size = new System.Drawing.Size(131, 23);
+            this.btnAgregarArticulo.TabIndex = 1;
+            this.btnAgregarArticulo.Text = "Agregar Articulo";
+            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgregarArticulo.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAgregarArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Name = "frmArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -58,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvArticulos;
+        private System.Windows.Forms.Button btnAgregarArticulo;
     }
 }

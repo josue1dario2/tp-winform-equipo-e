@@ -54,5 +54,57 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void Agregar(Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio); SELECT @@IDENTITY;");
+
+                datos.setearParametro("@codigo", nuevo.Codigo);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@descripcion", nuevo.Descripcion);
+                datos.setearParametro("@idMarca", nuevo.Marca != null ? (object)nuevo.Marca.Id : DBNull.Value);
+                datos.setearParametro("@idCategoria", nuevo.Categoria != null ? (object)nuevo.Categoria.Id : DBNull.Value);
+                datos.setearParametro("@precio", nuevo.Precio);
+
+                int idArticulo = datos.obtenerId();
+
+                if (nuevo.Imagenes != null && nuevo.Imagenes.Count > 0)
+                {
+                    foreach (var imagen in nuevo.Imagenes)
+                    {
+                        AccesoDatos datosImagen = new AccesoDatos();
+                        try
+                        {
+                            datosImagen.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @imagenUrl)");
+                            datosImagen.setearParametro("@idArticulo", idArticulo);
+                            datosImagen.setearParametro("@imagenUrl", imagen.ImagenUrl);
+
+                            datosImagen.ejecutarAccion();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                        finally
+                        {
+                            datosImagen.cerrarConexion();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
+
+
 }
