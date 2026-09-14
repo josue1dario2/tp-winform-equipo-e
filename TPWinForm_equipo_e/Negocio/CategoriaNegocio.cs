@@ -78,7 +78,26 @@ namespace Negocio
                 Base.cerrarConexion();
             }
         }
+        public void Eliminar(int id)
+        {
+            AccesoDatos Base = new AccesoDatos();
+            try
+            {
+                Base.setearConsulta("DELETE FROM MARCAS WHERE Id = @id;");
 
+                Base.setearParametro("@id", id);
+
+                Base.ejecutarAccion();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                Base.cerrarConexion();
+            }
+        }
 
 
 
