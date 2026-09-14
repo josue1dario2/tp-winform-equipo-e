@@ -57,6 +57,32 @@ namespace Negocio
         }
 
 
+        public void Modificar(Categoria Categoria)
+        {
+            AccesoDatos Base = new AccesoDatos();
+            try
+            {
+                Base.setearConsulta("UPDATE CATEGORIAS SET Descripcion = @descripcion WHERE Id = @id;");
+
+                Base.setearParametro("@descripcion", Categoria.Descripcion);
+                Base.setearParametro("@id", Categoria.Id);
+
+                Base.ejecutarAccion();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                Base.cerrarConexion();
+            }
+        }
+
+
+
+
+
 
 
 
