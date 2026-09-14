@@ -4,25 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TP_WinForm_equipo_e
-{
-    internal class Marca
+namespace Dominio
+{ 
+    public class Categoria
     {
+
         public int Id { get; set; }
+
         public string Descripcion { get; set; }
 
-        public Marca()
+        public Categoria()
         {
         }
 
-        public Marca(string descripcion)
+
+        public Categoria(string Descripcion)
         {
-            Descripcion = descripcion;
+            this.Descripcion = Descripcion;
         }
 
         public override string ToString()
         {
-            return Descripcion;
+             return Descripcion;
         }
+
+
+
     }
 }

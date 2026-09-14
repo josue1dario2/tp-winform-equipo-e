@@ -4,8 +4,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dominio;
 
-namespace TP_WinForm_equipo_e
+namespace Negocio
 {
     internal class CategoriaNegocio
     {
