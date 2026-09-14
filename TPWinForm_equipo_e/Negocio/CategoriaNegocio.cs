@@ -1,61 +1,43 @@
-﻿using System;
+﻿using Dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio;
 
 namespace Negocio
 {
     internal class CategoriaNegocio
     {
-
-    public List <Categoria> Listar()
+        public List<Categoria> Listar()
         {
-
-            SqlConnection Conexion = new SqlConnection();
+            List<Categoria> ListaDeCategorias = new List<Categoria>();
+            AccesoDatos Datos = new AccesoDatos();
             try
             {
-                
+                Datos.setearConsulta("SELECT Id, Descripcion FROM CATEGORIAS");
+                Datos.ejecutarLectura();
 
-                Conexion.ConnectionString = "server=.\\SQLEXPRESS;database=CATALOGO_P3_DB;integrated security=true";
-
-                SqlCommand Comando = new SqlCommand();
-
-                Comando.Connection = Conexion;
-
-                Conexion.Open();
-
-                Comando.CommandText = "SELECT Id,Descripcion FROM CATEGORIAS";
-                
-                SqlDataReader Lector = Comando.ExecuteReader();
-
-                List<Categoria> ListaDeCategorias = new List<Categoria>();
-
-                while(Lector.Read())
+                while (Datos.Lector.Read())
                 {
-
-                    Categoria auxiliar= new Categoria();
-
-                    auxiliar.Id = (int)Lector["Id"];
-                    auxiliar.Descripcion = (string)Lector["Descripcion"];
+                    Categoria auxiliar = new Categoria();
+                    auxiliar.Id = (int)Datos.Lector["Id"];
+                    auxiliar.Descripcion = (string)Datos.Lector["Descripcion"];
                     ListaDeCategorias.Add(auxiliar);
                 }
 
-
                 return ListaDeCategorias;
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
-
             finally
             {
-                Conexion.Close();
+                Datos.cerrarConexion();
             }
         }
-
     }
 }
