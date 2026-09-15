@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using Dominio;
 using negocio;
+using Utilitarios;
 
 namespace Negocio
 {
@@ -25,20 +27,20 @@ namespace Negocio
                 {
                     Articulo aux = new Articulo();
 
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Codigo = !(datos.Lector["Codigo"] is DBNull) ? (string)datos.Lector["Codigo"] : string.Empty;
-                    aux.Nombre = !(datos.Lector["Nombre"] is DBNull) ? (string)datos.Lector["Nombre"] : string.Empty;
-                    aux.Descripcion = !(datos.Lector["Descripcion"] is DBNull) ? (string)datos.Lector["Descripcion"] : string.Empty;
+                    aux.Id = datos.Lector.SafeInt("Id");
+                    aux.Codigo = datos.Lector.SafeString("Codigo");
+                    aux.Nombre = datos.Lector.SafeString("Nombre");
+                    aux.Descripcion = datos.Lector.SafeString("Descripcion");
 
                     aux.Marca = new Marca();
-                    aux.Marca.Id = !(datos.Lector["IdMarca"] is DBNull) ? (int)datos.Lector["IdMarca"] : 0;
-                    aux.Marca.Descripcion = !(datos.Lector["Marca"] is DBNull) ? (string)datos.Lector["Marca"] : string.Empty;
+                    aux.Marca.Id = datos.Lector.SafeInt("IdMarca");
+                    aux.Marca.Descripcion = datos.Lector.SafeString("Marca");
 
                     aux.Categoria = new Categoria();
-                    aux.Categoria.Id = !(datos.Lector["IdCategoria"] is DBNull) ? (int)datos.Lector["IdCategoria"] : 0;
-                    aux.Categoria.Descripcion = !(datos.Lector["Categoria"] is DBNull) ? (string)datos.Lector["Categoria"] : string.Empty;
+                    aux.Categoria.Id = datos.Lector.SafeInt("IdCategoria");
+                    aux.Categoria.Descripcion = datos.Lector.SafeString("Categoria");
 
-                    aux.Precio = !(datos.Lector["Precio"] is DBNull) ? (decimal)datos.Lector["Precio"] : 0m;
+                    aux.Precio = datos.Lector.SafeDecimal("Precio");
 
                     lista.Add(aux);
                 }
@@ -125,6 +127,4 @@ namespace Negocio
             }
         }
     }
-
-
 }

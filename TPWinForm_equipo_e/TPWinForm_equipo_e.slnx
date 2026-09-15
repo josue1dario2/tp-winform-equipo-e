@@ -2,4 +2,5 @@
   <Project Path="Dominio/Dominio.csproj" Id="d2a5cc20-a383-4392-9854-ff13caf71433" />
   <Project Path="Negocio/Negocio.csproj" Id="bea8a2e5-b1ec-4a86-87d5-d5fabca6da2f" />
   <Project Path="TP_WinForm_equipo_e/TP_WinForm_equipo_e.csproj" Id="454bef77-776f-430b-a859-10fff02ae558" />
+  <Project Path="Utilitarios/Utilitarios.csproj" Id="c011552d-0c38-426e-8428-419678e3e528" />
 </Solution>
