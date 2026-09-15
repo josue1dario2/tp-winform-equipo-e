@@ -83,10 +83,8 @@ namespace Negocio
             AccesoDatos Base = new AccesoDatos();
             try
             {
-                Base.setearConsulta("DELETE FROM MARCAS WHERE Id = @id;");
-
+                Base.setearConsulta("DELETE FROM CATEGORIAS WHERE Id = @id;");
                 Base.setearParametro("@id", id);
-
                 Base.ejecutarAccion();
             }
             catch
