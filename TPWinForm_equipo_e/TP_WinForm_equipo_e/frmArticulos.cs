@@ -65,5 +65,41 @@ namespace TP_WinForm_equipo_e
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnEliminarArticulo_Click(object sender, EventArgs e)
+        {
+            //ESTO ES PARA PRUEBA DE ELIMINAR ARTICULO
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                if (dgvArticulos.CurrentRow != null)
+                {
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                    DialogResult respuesta = MessageBox.Show(
+                        $"¿Estás seguro de que querés eliminar el artículo '{seleccionado.Nombre}'?",
+                        "Eliminando artículo",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        negocio.Eliminar(seleccionado.Id);
+                        dgvArticulos.DataSource = negocio.Listar();
+
+                        MessageBox.Show("¡Artículo e imágenes eliminados correctamente!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, seleccioná un artículo de la lista para poder eliminarlo.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
