@@ -16,7 +16,7 @@ namespace TP_WinForm_equipo_e
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmArticulos());
+            Application.Run(new PruebaPrincipal());
         }
     }
 }
