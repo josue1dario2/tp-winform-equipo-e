@@ -8,7 +8,7 @@ using negocio;
 
 namespace Negocio
 {
-    internal class MarcaNegocio
+    public class MarcaNegocio
     {
         public List<Marca> Listar()
         {

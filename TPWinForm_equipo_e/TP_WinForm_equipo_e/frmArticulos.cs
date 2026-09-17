@@ -10,11 +10,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace TP_WinForm_equipo_e
 {
     public partial class frmArticulos : Form
     {
+        private List<Articulo> listaArticulos;
+
         public frmArticulos()
         {
             InitializeComponent();
@@ -22,10 +23,19 @@ namespace TP_WinForm_equipo_e
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
+            CargarDatos();
+        }
+
+        private void CargarDatos()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                dgvArticulos.DataSource = negocio.Listar();
+                listaArticulos = negocio.Listar();
+                dgvArticulos.DataSource = listaArticulos;
+
+                if (dgvArticulos.Columns["Id"] != null)
+                    dgvArticulos.Columns["Id"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -35,40 +45,14 @@ namespace TP_WinForm_equipo_e
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //ESTO ES PARA PROBAR QUE SE CREA CON EXITO LUEGO REEMPLAZARLO POR UN FORMULARIO CORRESPONDIENTE 
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo nuevo = new Articulo();
+            //frmAltaArticulos alta = new frmAltaArticulos();
+            //alta.ShowDialog();
 
-            try
-            {
-                nuevo.Codigo = "TST01";
-                nuevo.Nombre = "Celular Test";
-                nuevo.Descripcion = "Probando inserción jerárquica";
-                nuevo.Precio = 5555.55m;
-
-                nuevo.Marca = new Marca();
-                nuevo.Marca.Id = 1;
-
-                nuevo.Categoria = new Categoria();
-                nuevo.Categoria.Id = 1;
-
-                nuevo.Imagenes.Add(new Imagen { ImagenUrl = "https://images.unsplash.com/photo-1.jpg" });
-
-                negocio.Agregar(nuevo);
-
-                MessageBox.Show("¡Artículo e imagen agregados con éxito :P");
-
-                dgvArticulos.DataSource = negocio.Listar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            CargarDatos();
         }
 
         private void btnEliminarArticulo_Click(object sender, EventArgs e)
         {
-            //ESTO ES PARA PRUEBA DE ELIMINAR ARTICULO
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
@@ -86,7 +70,7 @@ namespace TP_WinForm_equipo_e
                     if (respuesta == DialogResult.Yes)
                     {
                         negocio.Eliminar(seleccionado.Id);
-                        dgvArticulos.DataSource = negocio.Listar();
+                        CargarDatos();
 
                         MessageBox.Show("¡Artículo e imágenes eliminados correctamente!");
                     }
