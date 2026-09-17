@@ -95,6 +95,10 @@ namespace TP_WinForm_equipo_e
 
         }
 
-
+        private void listadoDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listadoArticulos ventana = new listadoArticulos();
+            ventana.ShowDialog();
+        }
     }
 }

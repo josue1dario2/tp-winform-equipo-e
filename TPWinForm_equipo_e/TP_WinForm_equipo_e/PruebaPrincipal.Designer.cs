@@ -33,8 +33,8 @@
             this.articulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeMarcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeCategoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -42,20 +42,22 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 98);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 121);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(712, 424);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(949, 522);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.articulosToolStripMenuItem,
             this.marcasToolStripMenuItem,
             this.categoriasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(768, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1024, 31);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,50 +66,52 @@
             this.articulosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listadoDeToolStripMenuItem});
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(90, 27);
             this.articulosToolStripMenuItem.Text = "Articulos";
             // 
             // listadoDeToolStripMenuItem
             // 
             this.listadoDeToolStripMenuItem.Name = "listadoDeToolStripMenuItem";
-            this.listadoDeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listadoDeToolStripMenuItem.Size = new System.Drawing.Size(243, 28);
             this.listadoDeToolStripMenuItem.Text = "Listado de Articulos";
+            this.listadoDeToolStripMenuItem.Click += new System.EventHandler(this.listadoDeToolStripMenuItem_Click);
             // 
             // marcasToolStripMenuItem
             // 
             this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listadoDeMarcasToolStripMenuItem});
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(78, 27);
             this.marcasToolStripMenuItem.Text = "Marcas";
+            // 
+            // listadoDeMarcasToolStripMenuItem
+            // 
+            this.listadoDeMarcasToolStripMenuItem.Name = "listadoDeMarcasToolStripMenuItem";
+            this.listadoDeMarcasToolStripMenuItem.Size = new System.Drawing.Size(231, 28);
+            this.listadoDeMarcasToolStripMenuItem.Text = "Listado de Marcas";
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listadoDeCategoriasToolStripMenuItem});
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.categoriasToolStripMenuItem.Text = "Categorias";
-            // 
-            // listadoDeMarcasToolStripMenuItem
-            // 
-            this.listadoDeMarcasToolStripMenuItem.Name = "listadoDeMarcasToolStripMenuItem";
-            this.listadoDeMarcasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listadoDeMarcasToolStripMenuItem.Text = "Listado de Marcas";
             // 
             // listadoDeCategoriasToolStripMenuItem
             // 
             this.listadoDeCategoriasToolStripMenuItem.Name = "listadoDeCategoriasToolStripMenuItem";
-            this.listadoDeCategoriasToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.listadoDeCategoriasToolStripMenuItem.Size = new System.Drawing.Size(258, 28);
             this.listadoDeCategoriasToolStripMenuItem.Text = "Listado de Categorias";
             // 
             // PruebaPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 603);
+            this.ClientSize = new System.Drawing.Size(1024, 742);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PruebaPrincipal";
             this.Text = "PruebaPrincipal";
             this.Load += new System.EventHandler(this.PruebaPrincipal_Load);
