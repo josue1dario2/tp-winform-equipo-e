@@ -238,7 +238,36 @@ namespace Negocio
         }
 
 
+        public void Modificar(Articulo Articulo)
+        {
+            AccesoDatos Base = new AccesoDatos();
 
+            try
+            {
+                Base.setearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion,     IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE Id = @id;");
+
+                Base.setearParametro("@codigo", Articulo.Codigo);
+                Base.setearParametro("@nombre", Articulo.Nombre);
+                Base.setearParametro("@descripcion", Articulo.Descripcion);
+                Base.setearParametro("@idMarca", Articulo.Marca != null ? (object)Articulo.Marca.Id : DBNull.Value);
+                Base.setearParametro("@idCategoria", Articulo.Categoria != null ? (object)Articulo.Categoria.Id : DBNull.Value);
+                Base.setearParametro("@precio", Articulo.Precio);
+                Base.setearParametro("@id", Articulo.Id);
+
+                Base.ejecutarAccion();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                Base.cerrarConexion();
+            }
+
+
+
+        }
 
 
 
