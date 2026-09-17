@@ -125,6 +125,130 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
+
+        
         }
+
+        public List<Articulo> Filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                string columna = "";
+                string condicion = "";
+
+
+                if (campo == "Nombre")
+                {
+                    columna = "A.Nombre";
+                }
+                else if (campo == "Codigo")
+                {
+                    columna = "A.Codigo";
+                }
+                else if (campo == "Precio")
+                {
+                    columna = "A.Precio";
+                }
+
+
+                if (criterio == "Contiene")
+                {
+                    condicion = " LIKE ";
+                    filtro = "%" + filtro + "%";
+                }
+                else if (criterio == "Comienza con")
+                {
+                    condicion = " LIKE ";
+                    filtro = filtro + "%";
+                }
+                else if (criterio == "Termina con")
+                {
+                    condicion = " LIKE ";
+                    filtro = "%" + filtro;
+                }
+                else if (criterio == "Igual a")
+                {
+                    condicion = " = ";
+                }
+                else if (criterio == "Mayor que")
+                {
+                    condicion = " > ";
+                }
+                else if (criterio == "Menor que")
+                {
+                    condicion = " < ";
+                }
+
+                string where = " WHERE " + columna + condicion + "@filtro";
+
+                datos.setearConsulta(
+                    "SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, " +
+                    "A.IdMarca, M.Descripcion AS Marca, " +
+                    "A.IdCategoria, C.Descripcion AS Categoria, A.Precio " +
+                    "FROM ARTICULOS A " +
+                    "LEFT JOIN MARCAS M ON M.Id = A.IdMarca " +
+                    "LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria" +
+                    where
+                );
+
+                datos.setearParametro("@filtro", filtro);
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+
+                    if (datos.Lector["IdMarca"] != DBNull.Value)
+                    {
+                        aux.Marca = new Marca();
+                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    }
+
+                    if (datos.Lector["IdCategoria"] != DBNull.Value)
+                    {
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    }
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
 }
