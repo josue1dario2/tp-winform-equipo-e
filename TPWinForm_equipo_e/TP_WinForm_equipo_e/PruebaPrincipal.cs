@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,14 +20,15 @@ namespace TP_WinForm_equipo_e
         {
             InitializeComponent();
         }
-
+        
+        
         private void PruebaPrincipal_Load(object sender, EventArgs e)
         {
 
-           ArticuloNegocio negocio = new ArticuloNegocio();
+            ArticuloNegocio negocio = new ArticuloNegocio();
             ImagenNegocio imagenNegocio = new ImagenNegocio();
 
-            List<Articulo> lista=negocio.Listar();
+            List<Articulo> lista = negocio.Listar();
 
 
             foreach (Articulo articulo in lista)
@@ -36,6 +38,9 @@ namespace TP_WinForm_equipo_e
 
                 Panel panel = new Panel();
                 panel.Size = new Size(210, 292);
+                panel.Tag = articulo;
+                panel.Click += panel_Click;
+                panel.BorderStyle = BorderStyle.FixedSingle;
 
                 Label lbNombre = new Label();
                 lbNombre.Location = new Point(3, 140);
@@ -67,21 +72,40 @@ namespace TP_WinForm_equipo_e
                 pictureBox.Location = new Point(-3, 0);
                 pictureBox.Size = new Size(210, 137);
 
+
                 if (imagenes.Count > 0)
-                { pictureBox.Image = Properties.Resources.ImagenDefault; }
+                {
+                    try
+                    {
+                        pictureBox.Load(imagenes[0].ImagenUrl);
+
+                    }
+                    catch (WebException)
+                    { pictureBox.Image = Properties.Resources.ImagenDefault; }
+
+
+                }
                 else
-                { pictureBox.Image=Properties.Resources.ImagenDefault; }
+                { pictureBox.Image = Properties.Resources.ImagenDefault; }
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                
-                   
-                    
+         
+
+
+
+
                 panel.Controls.Add(pictureBox);
                 panel.Controls.Add(lbNombre);
                 panel.Controls.Add(lbMarca);
                 panel.Controls.Add(lbCategoria);
-                panel.Controls.Add(lbPrecio); 
+                panel.Controls.Add(lbPrecio);
 
                 flowLayoutPanel1.Controls.Add(panel);
+
+
+               
+
+                
+
 
 
 
@@ -94,11 +118,29 @@ namespace TP_WinForm_equipo_e
 
 
         }
-
         private void listadoDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listadoArticulos ventana = new listadoArticulos();
             ventana.ShowDialog();
         }
+
+        private void panel_Click(object sender, EventArgs e)
+        {
+            Panel panel = (Panel)sender;
+            Articulo articulo = (Articulo)panel.Tag;
+            
+            DetallesArticulo detalles=new DetallesArticulo(articulo);
+            detalles.Show();
+
+
+        }
+
+
+
+
+
+
+
+
     }
 }
