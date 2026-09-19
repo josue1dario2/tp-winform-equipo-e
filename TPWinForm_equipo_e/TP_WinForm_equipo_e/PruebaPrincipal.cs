@@ -20,9 +20,46 @@ namespace TP_WinForm_equipo_e
         {
             InitializeComponent();
         }
-        
-        
+
+
         private void PruebaPrincipal_Load(object sender, EventArgs e)
+        {
+
+            CargarArticulos();
+
+
+
+        }
+        private void listadoDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listadoArticulos ventana = new listadoArticulos();
+            ventana.ShowDialog();
+        }
+
+        private void panel_Click(object sender, EventArgs e)
+        {
+            Panel panel = (Panel)sender;
+            Articulo articulo = (Articulo)panel.Tag;
+
+            DetallesArticulo detalles = new DetallesArticulo(articulo);
+            detalles.Show();
+
+
+        }
+
+        private void agregarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministrarMarca ventana = new AdministrarMarca();
+            ventana.Show();
+        }
+
+        private void listadoDeCategoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministrarCategorias ventana = new AdministrarCategorias();
+            ventana.Show();
+        }
+
+        private void CargarArticulos()
         {
 
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -88,7 +125,7 @@ namespace TP_WinForm_equipo_e
                 else
                 { pictureBox.Image = Properties.Resources.ImagenDefault; }
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-         
+
 
 
 
@@ -102,49 +139,21 @@ namespace TP_WinForm_equipo_e
                 flowLayoutPanel1.Controls.Add(panel);
 
 
-               
-
-                
-
-
-
-
             }
 
 
-
-
-
-
-
-        }
-        private void listadoDeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            listadoArticulos ventana = new listadoArticulos();
-            ventana.ShowDialog();
         }
 
-        private void panel_Click(object sender, EventArgs e)
+
+
+        private void BotonActualizar_Click(object sender, EventArgs e)
         {
-            Panel panel = (Panel)sender;
-            Articulo articulo = (Articulo)panel.Tag;
-            
-            DetallesArticulo detalles=new DetallesArticulo(articulo);
-            detalles.Show();
-
-
+            CargarArticulos();
         }
 
-        private void agregarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mensajeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdministrarMarca ventana = new AdministrarMarca();
-            ventana.Show();
-        }
-
-        private void listadoDeCategoriasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AdministrarCategorias ventana = new AdministrarCategorias();
-            ventana.Show();
+            MessageBox.Show("Buenas profesores, soy Fabricio Bordon miembro del equipo E, queria decirles que meti el boton actualizar de toda la lista porque si lo automatizo se ralentiza demasiado por las urls que nos proporcionaron y no funcionan (que son la mayoría) asi que puse el boton para que ustedes decidan cuando se actualiza");
         }
     }
 }

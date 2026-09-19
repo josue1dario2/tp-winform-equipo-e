@@ -36,6 +36,8 @@
             this.agregarMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeCategoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BotonActualizar = new System.Windows.Forms.Button();
+            this.mensajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.articulosToolStripMenuItem,
             this.marcasToolStripMenuItem,
-            this.categoriasToolStripMenuItem});
+            this.categoriasToolStripMenuItem,
+            this.mensajeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -87,7 +90,7 @@
             // agregarMarcaToolStripMenuItem
             // 
             this.agregarMarcaToolStripMenuItem.Name = "agregarMarcaToolStripMenuItem";
-            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.agregarMarcaToolStripMenuItem.Text = "Administrar Marcas";
             this.agregarMarcaToolStripMenuItem.Click += new System.EventHandler(this.agregarMarcaToolStripMenuItem_Click);
             // 
@@ -106,11 +109,29 @@
             this.listadoDeCategoriasToolStripMenuItem.Text = "Administrar Categorias";
             this.listadoDeCategoriasToolStripMenuItem.Click += new System.EventHandler(this.listadoDeCategoriasToolStripMenuItem_Click);
             // 
+            // BotonActualizar
+            // 
+            this.BotonActualizar.Location = new System.Drawing.Point(12, 47);
+            this.BotonActualizar.Name = "BotonActualizar";
+            this.BotonActualizar.Size = new System.Drawing.Size(128, 45);
+            this.BotonActualizar.TabIndex = 5;
+            this.BotonActualizar.Text = "Actualizar";
+            this.BotonActualizar.UseVisualStyleBackColor = true;
+            this.BotonActualizar.Click += new System.EventHandler(this.BotonActualizar_Click);
+            // 
+            // mensajeToolStripMenuItem
+            // 
+            this.mensajeToolStripMenuItem.Name = "mensajeToolStripMenuItem";
+            this.mensajeToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.mensajeToolStripMenuItem.Text = "Mensaje";
+            this.mensajeToolStripMenuItem.Click += new System.EventHandler(this.mensajeToolStripMenuItem_Click);
+            // 
             // PruebaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 603);
+            this.Controls.Add(this.BotonActualizar);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "PruebaPrincipal";
@@ -132,5 +153,7 @@
         private System.Windows.Forms.ToolStripMenuItem listadoDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listadoDeCategoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarMarcaToolStripMenuItem;
+        private System.Windows.Forms.Button BotonActualizar;
+        private System.Windows.Forms.ToolStripMenuItem mensajeToolStripMenuItem;
     }
 }
