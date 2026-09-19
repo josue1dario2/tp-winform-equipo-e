@@ -1,6 +1,6 @@
 ﻿namespace TP_WinForm_equipo_e
 {
-    partial class listadoArticulos
+    partial class AdministrarArticulos
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,9 @@
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.pbxArticulos = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArticulos
@@ -64,19 +66,29 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // listadoArticulos
+            // pbxArticulos
+            // 
+            this.pbxArticulos.Location = new System.Drawing.Point(1006, 39);
+            this.pbxArticulos.Name = "pbxArticulos";
+            this.pbxArticulos.Size = new System.Drawing.Size(330, 302);
+            this.pbxArticulos.TabIndex = 3;
+            this.pbxArticulos.TabStop = false;
+            // 
+            // AdministrarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1011, 500);
+            this.ClientSize = new System.Drawing.Size(1348, 500);
+            this.Controls.Add(this.pbxArticulos);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.dgvArticulos);
-            this.Name = "listadoArticulos";
+            this.Name = "AdministrarArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Articulos";
             this.Load += new System.EventHandler(this.listadoArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -86,5 +98,6 @@
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.PictureBox pbxArticulos;
     }
 }

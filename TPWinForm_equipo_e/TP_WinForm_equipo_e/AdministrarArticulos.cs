@@ -14,15 +14,18 @@ using System.Windows.Forms;
 
 namespace TP_WinForm_equipo_e
 {
-    public partial class listadoArticulos : Form
+    public partial class AdministrarArticulos : Form
     {
-        public listadoArticulos()
+        private List<Articulo> listaArticulos;
+        public AdministrarArticulos()
         {
             InitializeComponent();
         }
 
         private void listadoArticulos_Load(object sender, EventArgs e)
         {
+            pbxArticulos.SizeMode = PictureBoxSizeMode.StretchImage;
+
             cargarArticulos();
         }
 
@@ -32,7 +35,11 @@ namespace TP_WinForm_equipo_e
         public void cargarArticulos()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvArticulos.DataSource = negocio.Listar();
+            listaArticulos = negocio.Listar();
+            dgvArticulos.DataSource = listaArticulos;
+
+            //pbxArticulos.Load(listaArticulos[0].Im
+                //.Imagenes.ToString());
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
