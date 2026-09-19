@@ -18,6 +18,7 @@ namespace TP_WinForm_equipo_e
         public AdministrarMarca()
         {
             InitializeComponent();
+            this.Text = "Administrar Marca";
         }
 
 
@@ -25,21 +26,37 @@ namespace TP_WinForm_equipo_e
         {
             MarcaNegocio listado = new MarcaNegocio();
             dvgListadoMarcas.DataSource = listado.Listar();
+
+            if(dvgListadoMarcas.Columns["Id"] != null)
+                dvgListadoMarcas.Columns["Id"].Visible = false;
+
+            if (dvgListadoMarcas.Columns["Descripcion"] != null)
+                dvgListadoMarcas.Columns["Descripcion"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void AdministrarMarca_Load(object sender, EventArgs e)
         {
             cargarMarcas();
+            IdMarcaSeleccionada = 0;
         }
 
         private void botonAgregarMarca_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textboxNombreMarca.Text))
+            {
+                MessageBox.Show("Por favor, ingresá el nombre de la marca.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             Marca ParaAgregar = new Marca();
             MarcaNegocio Agregador=new MarcaNegocio();
 
             ParaAgregar.Descripcion = textboxNombreMarca.Text;
 
             Agregador.Agregar(ParaAgregar);
+
+            textboxNombreMarca.Clear();
+            textboxNombreMarca.Focus();
             cargarMarcas();
         }
 
@@ -101,7 +118,8 @@ namespace TP_WinForm_equipo_e
 
                     Eliminar.Id = IdMarcaSeleccionada;
 
-
+                    textBoxModificarEliminarMarca.Clear();
+                    IdMarcaSeleccionada = 0;
 
 
                     aplicar.Eliminar(Eliminar.Id);
