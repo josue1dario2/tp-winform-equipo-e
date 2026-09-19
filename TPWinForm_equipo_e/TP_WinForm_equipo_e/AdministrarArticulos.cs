@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Data.SqlClient;
+
 
 namespace TP_WinForm_equipo_e
 {
@@ -37,9 +37,9 @@ namespace TP_WinForm_equipo_e
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 listaArticulos = negocio.Listar();
                 dgvArticulos.DataSource = listaArticulos;
-                ocultarColumnas();
+                //ocultarColumnas();
 
-                // Lista vacía: SelectionChanged no dispara con una fila, así que ponemos el placeholder a mano
+               
                 if (listaArticulos.Count == 0)
                     cargarImagen(null);
             }
@@ -71,7 +71,7 @@ namespace TP_WinForm_equipo_e
             catch (Exception ex)
             {
                 // URL rota o sin conexión
-                //MessageBox.Show(ex.Message);
+                
                 pbxArticulos.Image = Properties.Resources.ImagenDefault;
             }
         }
@@ -113,6 +113,41 @@ namespace TP_WinForm_equipo_e
 
             cargarImagen(seleccionado.Id.ToString());
             */
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                if (dgvArticulos.CurrentRow != null)
+                {
+                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                    DialogResult respuesta = MessageBox.Show(
+                        $"¿Estás seguro de que querés eliminar el artículo '{seleccionado.Nombre}'?",
+                        "Eliminando artículo",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        negocio.Eliminar(seleccionado.Id);
+                        cargarArticulos();
+
+                        MessageBox.Show("¡Artículo e imágenes eliminados correctamente!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, seleccioná un artículo de la lista para poder eliminarlo.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
