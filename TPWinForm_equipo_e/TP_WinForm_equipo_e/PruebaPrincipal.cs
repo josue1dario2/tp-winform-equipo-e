@@ -140,5 +140,11 @@ namespace TP_WinForm_equipo_e
             AdministrarMarca ventana = new AdministrarMarca();
             ventana.Show();
         }
+
+        private void listadoDeCategoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministrarCategorias ventana = new AdministrarCategorias();
+            ventana.Show();
+        }
     }
 }

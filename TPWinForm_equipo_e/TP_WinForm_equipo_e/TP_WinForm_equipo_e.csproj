@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministrarCategorias.Designer.cs">
+      <DependentUpon>AdministrarCategorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdministrarMarca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="PruebaPrincipal.Designer.cs">
       <DependentUpon>PruebaPrincipal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdministrarCategorias.resx">
+      <DependentUpon>AdministrarCategorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdministrarMarca.resx">
       <DependentUpon>AdministrarMarca.cs</DependentUpon>
     </EmbeddedResource>
