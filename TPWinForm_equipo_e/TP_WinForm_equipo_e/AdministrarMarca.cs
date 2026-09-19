@@ -21,23 +21,28 @@ namespace TP_WinForm_equipo_e
             this.Text = "Administrar Marca";
         }
 
-
         public void cargarMarcas()
         {
             MarcaNegocio listado = new MarcaNegocio();
             dvgListadoMarcas.DataSource = listado.Listar();
 
-            if(dvgListadoMarcas.Columns["Id"] != null)
+            if (dvgListadoMarcas.Columns["Id"] != null)
                 dvgListadoMarcas.Columns["Id"].Visible = false;
 
             if (dvgListadoMarcas.Columns["Descripcion"] != null)
+            {
+                dvgListadoMarcas.Columns["Descripcion"].HeaderText = "Descripción";
                 dvgListadoMarcas.Columns["Descripcion"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            dvgListadoMarcas.ColumnHeadersDefaultCellStyle.Font = new Font(dvgListadoMarcas.Font, FontStyle.Bold);
         }
 
         private void AdministrarMarca_Load(object sender, EventArgs e)
         {
             cargarMarcas();
             IdMarcaSeleccionada = 0;
+            lblMarcaAgregar.Text = ""; 
         }
 
         private void botonAgregarMarca_Click(object sender, EventArgs e)
@@ -48,93 +53,92 @@ namespace TP_WinForm_equipo_e
                 return;
             }
 
+            string nombreMarca = textboxNombreMarca.Text.Trim();
             Marca ParaAgregar = new Marca();
-            MarcaNegocio Agregador=new MarcaNegocio();
+            MarcaNegocio Agregador = new MarcaNegocio();
 
-            ParaAgregar.Descripcion = textboxNombreMarca.Text;
-
+            ParaAgregar.Descripcion = nombreMarca;
             Agregador.Agregar(ParaAgregar);
+
+            lblMarcaAgregar.Text = $"La marca se agregó correctamente.";
+            lblMarcaAgregar.ForeColor = Color.ForestGreen;
 
             textboxNombreMarca.Clear();
             textboxNombreMarca.Focus();
             cargarMarcas();
         }
 
-
-
         private void dvgListadoMarcas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int fila=e.RowIndex;
+            if (e.RowIndex >= 0)
+            {
+                int fila = e.RowIndex;
+                Marca marca = (Marca)dvgListadoMarcas.Rows[e.RowIndex].DataBoundItem;
 
-            Marca marca = (Marca)dvgListadoMarcas.Rows[e.RowIndex].DataBoundItem;
+                textBoxModificarEliminarMarca.Text = marca.Descripcion;
+                IdMarcaSeleccionada = marca.Id;
 
-            textBoxModificarEliminarMarca.Text = marca.Descripcion;
-
-            IdMarcaSeleccionada = marca.Id;
+                lblMarcaAgregar.Text = "";
+            }
         }
 
         private void BotonModificar_Click(object sender, EventArgs e)
         {
-            if(IdMarcaSeleccionada==0)
+            if (IdMarcaSeleccionada == 0)
             {
-                MessageBox.Show("No se selecciono Marca a cambiar");
+                MessageBox.Show("Por favor, seleccioná una marca de la lista para modificar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                DialogResult respuesta = MessageBox.Show("seguro que quiere modificar esta Marca?", "seguro Quiere modificar?", MessageBoxButtons.YesNo);
+                DialogResult respuesta = MessageBox.Show("¿Estás seguro de que querés modificar esta marca?", "Confirmar modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (respuesta == DialogResult.Yes)
                 {
                     Marca modificar = new Marca();
                     MarcaNegocio aplicar = new MarcaNegocio();
 
                     modificar.Id = IdMarcaSeleccionada;
-                    modificar.Descripcion = textBoxModificarEliminarMarca.Text;
-
-
+                    modificar.Descripcion = textBoxModificarEliminarMarca.Text.Trim();
 
                     aplicar.Modificar(modificar);
                     cargarMarcas();
+
+                    lblMarcaAgregar.Text = $"La marca se modificó exitosamente.";
+                    lblMarcaAgregar.ForeColor = Color.ForestGreen;
+
+                    textBoxModificarEliminarMarca.Clear();
+                    IdMarcaSeleccionada = 0;
                 }
-            }    
-
-
-
-
+            }
         }
 
         private void BotonEliminar_Click(object sender, EventArgs e)
         {
             if (IdMarcaSeleccionada == 0)
             {
-                MessageBox.Show("No se selecciono Marca a Eliminar");
+                MessageBox.Show("Por favor, seleccioná una marca de la lista para eliminar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                DialogResult respuesta = MessageBox.Show("seguro que quiere Eliminar esta Marca?", "seguro Quiere Eliminar?", MessageBoxButtons.YesNo);
+                DialogResult respuesta = MessageBox.Show("¿Estás seguro de que querés eliminar esta marca?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (respuesta == DialogResult.Yes)
                 {
-                    Marca Eliminar = new Marca();
                     MarcaNegocio aplicar = new MarcaNegocio();
 
-                    Eliminar.Id = IdMarcaSeleccionada;
+                    aplicar.Eliminar(IdMarcaSeleccionada);
+
+                    lblMarcaAgregar.Text = $"La marca se eliminó correctamente.";
+                    lblMarcaAgregar.ForeColor = Color.ForestGreen;
 
                     textBoxModificarEliminarMarca.Clear();
                     IdMarcaSeleccionada = 0;
-
-
-                    aplicar.Eliminar(Eliminar.Id);
                     cargarMarcas();
                 }
             }
         }
-  
-    
-    
-    
-    
-    
-    
-    
-    }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
 }

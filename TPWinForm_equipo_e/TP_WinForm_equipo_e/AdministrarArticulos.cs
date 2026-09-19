@@ -11,13 +11,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace TP_WinForm_equipo_e
 {
     public partial class AdministrarArticulos : Form
     {
         private List<Articulo> listaArticulos;
-        
 
         public AdministrarArticulos()
         {
@@ -26,10 +24,9 @@ namespace TP_WinForm_equipo_e
 
         private void listadoArticulos_Load(object sender, EventArgs e)
         {
-            pbxArticulos.SizeMode = PictureBoxSizeMode.StretchImage;
-            
+            pbxArticulos.SizeMode = PictureBoxSizeMode.Zoom;
+            dgvArticulos.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvArticulos_CellFormatting);
             cargarArticulos();
-            dgvArticulos.Columns["Id"].Visible = false;
         }
 
         public void cargarArticulos()
@@ -39,11 +36,14 @@ namespace TP_WinForm_equipo_e
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 listaArticulos = negocio.Listar();
                 dgvArticulos.DataSource = listaArticulos;
-                //ocultarColumnas();
 
-               
+                ocultarYFormatearColumnas();
+
                 if (listaArticulos.Count == 0)
+                {
                     cargarImagen(null);
+                    LimpiarFichaDetalle();
+                }
             }
             catch (Exception ex)
             {
@@ -51,29 +51,52 @@ namespace TP_WinForm_equipo_e
             }
         }
 
-        private void ocultarColumnas()
+        private void ocultarYFormatearColumnas()
         {
             if (dgvArticulos.Columns["Imagenes"] != null)
                 dgvArticulos.Columns["Imagenes"].Visible = false;
             if (dgvArticulos.Columns["Id"] != null)
                 dgvArticulos.Columns["Id"].Visible = false;
+
+            if (dgvArticulos.Columns["Codigo"] != null) dgvArticulos.Columns["Codigo"].HeaderText = "Código";
+            if (dgvArticulos.Columns["Descripcion"] != null) dgvArticulos.Columns["Descripcion"].HeaderText = "Descripción";
+            if (dgvArticulos.Columns["Categoria"] != null) dgvArticulos.Columns["Categoria"].HeaderText = "Categoría";
+
+            dgvArticulos.ColumnHeadersDefaultCellStyle.Font = new Font(dgvArticulos.Font, FontStyle.Bold);
+
+            if (dgvArticulos.Columns["Precio"] != null)
+            {
+                dgvArticulos.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
         }
 
-
+        private void dgvArticulos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvArticulos.Columns[e.ColumnIndex].Name == "Precio" && e.Value != null)
+            {
+                if (decimal.TryParse(e.Value.ToString(), out decimal precio))
+                {
+                    e.Value = "$ " + precio.ToString("0.##");
+                    e.FormattingApplied = true;
+                }
+            }
+        }
 
         private void cargarImagen(string url)
         {
             try
             {
-                if (string.IsNullOrEmpty(url))
+                if (string.IsNullOrWhiteSpace(url))
+                {
                     pbxArticulos.Image = Properties.Resources.ImagenDefault;
+                }
                 else
-                    pbxArticulos.Load(url);
+                {
+                    pbxArticulos.Load(url.Trim());
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // URL rota o sin conexión
-                
                 pbxArticulos.Image = Properties.Resources.ImagenDefault;
             }
         }
@@ -81,12 +104,6 @@ namespace TP_WinForm_equipo_e
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnActualizar_Click_1(object sender, EventArgs e)
-        {
-            cargarArticulos();
-           
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -98,23 +115,30 @@ namespace TP_WinForm_equipo_e
             if (seleccionado == null)
                 return;
 
-            string url = seleccionado.Imagenes.FirstOrDefault()?.ImagenUrl;
+            string url = null;
+            if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
+            {
+                url = seleccionado.Imagenes[0].ImagenUrl;
+            }
+
             cargarImagen(url);
 
-            /*
-            if (dgvArticulos.CurrentRow == null)
-                return;
+            string marca = seleccionado.Marca != null ? seleccionado.Marca.Descripcion : "Sin marca";
+            string precioStr = "$ " + seleccionado.Precio.ToString("0.##");
+            string descripcion = string.IsNullOrWhiteSpace(seleccionado.Descripcion) ? "Sin descripción" : seleccionado.Descripcion;
 
-            Articulo seleccionado = dgvArticulos.CurrentRow.DataBoundItem as Articulo;
-            if (seleccionado == null)
-                return;
+            if (lblDetalleProducto != null)
+            {
+                lblDetalleProducto.Text = $"{seleccionado.Nombre}\n{marca}  |  {precioStr}\n{descripcion}";
+            }
+        }
 
-            string url = seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0
-       ? seleccionado.Imagenes[0].ImagenUrl
-       : null;
-
-            cargarImagen(seleccionado.Id.ToString());
-            */
+        private void LimpiarFichaDetalle()
+        {
+            if (lblDetalleProducto != null)
+            {
+                lblDetalleProducto.Text = "Sin artículos disponibles";
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -137,7 +161,6 @@ namespace TP_WinForm_equipo_e
                     {
                         negocio.Eliminar(seleccionado.Id);
                         cargarArticulos();
-
                         MessageBox.Show("¡Artículo e imágenes eliminados correctamente!");
                     }
                 }
@@ -173,7 +196,7 @@ namespace TP_WinForm_equipo_e
                 AgregarArticulos ventana = new AgregarArticulos();
                 ventana.Modo = ModoFormulario.Modificar;
                 ventana.ArticuloSeleccionado = seleccionado;
-                ventana.idImagenSeleccionad = 0; 
+                ventana.idImagenSeleccionad = 0;
                 ventana.ShowDialog();
 
                 cargarArticulos();
@@ -182,7 +205,6 @@ namespace TP_WinForm_equipo_e
             {
                 MessageBox.Show("Por favor, seleccioná un artículo para modificar.");
             }
-
         }
     }
 }

@@ -44,10 +44,9 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 121);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 98);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(949, 522);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(712, 424);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // menuStrip1
@@ -60,8 +59,8 @@
             this.mensajeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1024, 31);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(768, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,14 +69,14 @@
             this.articulosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listadoDeToolStripMenuItem});
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(90, 27);
-            this.articulosToolStripMenuItem.Text = "Articulos";
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.articulosToolStripMenuItem.Text = "Artículos";
             // 
             // listadoDeToolStripMenuItem
             // 
             this.listadoDeToolStripMenuItem.Name = "listadoDeToolStripMenuItem";
-            this.listadoDeToolStripMenuItem.Size = new System.Drawing.Size(253, 28);
-            this.listadoDeToolStripMenuItem.Text = "Administrar Articulos";
+            this.listadoDeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.listadoDeToolStripMenuItem.Text = "Administrar Artículos";
             this.listadoDeToolStripMenuItem.Click += new System.EventHandler(this.listadoDeToolStripMenuItem_Click);
             // 
             // marcasToolStripMenuItem
@@ -85,13 +84,13 @@
             this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarMarcaToolStripMenuItem});
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(78, 27);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.marcasToolStripMenuItem.Text = "Marcas";
             // 
             // agregarMarcaToolStripMenuItem
             // 
             this.agregarMarcaToolStripMenuItem.Name = "agregarMarcaToolStripMenuItem";
-            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(241, 28);
+            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.agregarMarcaToolStripMenuItem.Text = "Administrar Marcas";
             this.agregarMarcaToolStripMenuItem.Click += new System.EventHandler(this.agregarMarcaToolStripMenuItem_Click);
             // 
@@ -100,29 +99,29 @@
             this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listadoDeCategoriasToolStripMenuItem});
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
-            this.categoriasToolStripMenuItem.Text = "Categorias";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.categoriasToolStripMenuItem.Text = "Categorías";
             // 
             // listadoDeCategoriasToolStripMenuItem
             // 
             this.listadoDeCategoriasToolStripMenuItem.Name = "listadoDeCategoriasToolStripMenuItem";
-            this.listadoDeCategoriasToolStripMenuItem.Size = new System.Drawing.Size(268, 28);
-            this.listadoDeCategoriasToolStripMenuItem.Text = "Administrar Categorias";
+            this.listadoDeCategoriasToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.listadoDeCategoriasToolStripMenuItem.Text = "Administrar Categorías";
             this.listadoDeCategoriasToolStripMenuItem.Click += new System.EventHandler(this.listadoDeCategoriasToolStripMenuItem_Click);
             // 
             // mensajeToolStripMenuItem
             // 
             this.mensajeToolStripMenuItem.Name = "mensajeToolStripMenuItem";
-            this.mensajeToolStripMenuItem.Size = new System.Drawing.Size(87, 27);
+            this.mensajeToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.mensajeToolStripMenuItem.Text = "Mensaje";
             this.mensajeToolStripMenuItem.Click += new System.EventHandler(this.mensajeToolStripMenuItem_Click);
             // 
             // BotonActualizar
             // 
-            this.BotonActualizar.Location = new System.Drawing.Point(16, 58);
-            this.BotonActualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BotonActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BotonActualizar.Location = new System.Drawing.Point(12, 37);
             this.BotonActualizar.Name = "BotonActualizar";
-            this.BotonActualizar.Size = new System.Drawing.Size(171, 55);
+            this.BotonActualizar.Size = new System.Drawing.Size(128, 45);
             this.BotonActualizar.TabIndex = 5;
             this.BotonActualizar.Text = "Actualizar";
             this.BotonActualizar.UseVisualStyleBackColor = true;
@@ -130,15 +129,15 @@
             // 
             // PruebaPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 742);
+            this.ClientSize = new System.Drawing.Size(768, 603);
             this.Controls.Add(this.BotonActualizar);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PruebaPrincipal";
-            this.Text = "PruebaPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Menú Principal";
             this.Load += new System.EventHandler(this.PruebaPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
