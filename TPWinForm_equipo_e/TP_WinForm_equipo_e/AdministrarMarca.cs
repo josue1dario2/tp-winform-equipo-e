@@ -53,7 +53,7 @@ namespace TP_WinForm_equipo_e
 
             textBoxModificarEliminarMarca.Text = marca.Descripcion;
 
-            int IdMarcaSeleccionada = marca.Id;
+            IdMarcaSeleccionada = marca.Id;
         }
 
         private void BotonModificar_Click(object sender, EventArgs e)
@@ -77,7 +77,48 @@ namespace TP_WinForm_equipo_e
 
             }    
 
+
+
+
+
+
+
+
+
+
+
+
         }
+
+        private void BotonEliminar_Click(object sender, EventArgs e)
+        {
+            if (IdMarcaSeleccionada == 0)
+            {
+                MessageBox.Show("No se selecciono Marca a Eliminar");
+            }
+            else
+            {
+                Marca Eliminar = new Marca();
+                MarcaNegocio aplicar = new MarcaNegocio();
+
+                Eliminar.Id = IdMarcaSeleccionada;
+                
+
+
+
+                aplicar.Eliminar(Eliminar.Id);
+                cargarMarcas();
+
+            }
+        }
+  
+    
+    
+    
+    
+    
+    
+    
     }
 
 }

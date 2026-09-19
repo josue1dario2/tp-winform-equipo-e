@@ -118,6 +118,7 @@
             this.BotonEliminar.TabIndex = 9;
             this.BotonEliminar.Text = "Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = true;
+            this.BotonEliminar.Click += new System.EventHandler(this.BotonEliminar_Click);
             // 
             // AdministrarMarca
             // 
