@@ -64,26 +64,21 @@ namespace TP_WinForm_equipo_e
             }
             else
             {
-                Marca modificar = new Marca();
-                MarcaNegocio aplicar = new MarcaNegocio();
+                DialogResult respuesta = MessageBox.Show("seguro que quiere modificar esta Marca?", "seguro Quiere modificar?", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Marca modificar = new Marca();
+                    MarcaNegocio aplicar = new MarcaNegocio();
 
-                modificar.Id = IdMarcaSeleccionada;
-                modificar.Descripcion = textBoxModificarEliminarMarca.Text;
+                    modificar.Id = IdMarcaSeleccionada;
+                    modificar.Descripcion = textBoxModificarEliminarMarca.Text;
 
 
 
-                aplicar.Modificar(modificar);
-                cargarMarcas();
-
+                    aplicar.Modificar(modificar);
+                    cargarMarcas();
+                }
             }    
-
-
-
-
-
-
-
-
 
 
 
@@ -98,17 +93,20 @@ namespace TP_WinForm_equipo_e
             }
             else
             {
-                Marca Eliminar = new Marca();
-                MarcaNegocio aplicar = new MarcaNegocio();
+                DialogResult respuesta = MessageBox.Show("seguro que quiere Eliminar esta Marca?", "seguro Quiere Eliminar?", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Marca Eliminar = new Marca();
+                    MarcaNegocio aplicar = new MarcaNegocio();
 
-                Eliminar.Id = IdMarcaSeleccionada;
-                
+                    Eliminar.Id = IdMarcaSeleccionada;
 
 
 
-                aplicar.Eliminar(Eliminar.Id);
-                cargarMarcas();
 
+                    aplicar.Eliminar(Eliminar.Id);
+                    cargarMarcas();
+                }
             }
         }
   

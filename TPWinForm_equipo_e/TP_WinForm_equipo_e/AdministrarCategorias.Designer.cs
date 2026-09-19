@@ -89,9 +89,9 @@
             this.lbAgregar.AutoSize = true;
             this.lbAgregar.Location = new System.Drawing.Point(291, 19);
             this.lbAgregar.Name = "lbAgregar";
-            this.lbAgregar.Size = new System.Drawing.Size(83, 13);
+            this.lbAgregar.Size = new System.Drawing.Size(98, 13);
             this.lbAgregar.TabIndex = 13;
-            this.lbAgregar.Text = "Agregar Marca: ";
+            this.lbAgregar.Text = "Agregar Categoria: ";
             // 
             // lbTodasLasCategorias
             // 

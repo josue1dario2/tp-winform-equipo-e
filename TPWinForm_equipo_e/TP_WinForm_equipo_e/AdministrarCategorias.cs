@@ -61,17 +61,20 @@ namespace TP_WinForm_equipo_e
             }
             else
             {
-                Categoria modificar = new Categoria();
-                CategoriaNegocio aplicar = new CategoriaNegocio();
+                DialogResult respuesta = MessageBox.Show("seguro que quiere modificar esta Categoria?", "seguro Quiere modificar?", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    Categoria modificar = new Categoria();
+                    CategoriaNegocio aplicar = new CategoriaNegocio();
 
-                modificar.Id = IdCategoriaSeleccionada;
-                modificar.Descripcion = textBoxModificarEliminarCategoria.Text;
+                    modificar.Id = IdCategoriaSeleccionada;
+                    modificar.Descripcion = textBoxModificarEliminarCategoria.Text;
 
 
 
-                aplicar.Modificar(modificar);
-                cargarCategorias();
-
+                    aplicar.Modificar(modificar);
+                    cargarCategorias();
+                }
             }
         }
 
@@ -83,16 +86,23 @@ namespace TP_WinForm_equipo_e
             }
             else
             {
-                Categoria Eliminar = new Categoria();
-                CategoriaNegocio aplicar = new CategoriaNegocio();
+                DialogResult respuesta = MessageBox.Show("seguro que quiere eliminar esta Categoria?","seguro Quiere elimianar?", MessageBoxButtons.YesNo);
+               
+                if (respuesta == DialogResult.Yes)
+                {
+                    Categoria Eliminar = new Categoria();
+                    CategoriaNegocio aplicar = new CategoriaNegocio();
 
-                Eliminar.Id = IdCategoriaSeleccionada;
+                    Eliminar.Id = IdCategoriaSeleccionada;
 
 
 
 
-                aplicar.Eliminar(Eliminar.Id);
-                cargarCategorias();
+                    aplicar.Eliminar(Eliminar.Id);
+                    cargarCategorias();
+                }
+                
+
             }
         }
     }
