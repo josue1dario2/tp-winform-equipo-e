@@ -135,12 +135,10 @@ namespace TP_WinForm_equipo_e
 
         }
 
-
-
-
-
-
-
-
+        private void agregarMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AdministrarMarca ventana = new AdministrarMarca();
+            ventana.Show();
+        }
     }
 }

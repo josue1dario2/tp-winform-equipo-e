@@ -34,8 +34,10 @@
             this.listadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeMarcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeCategoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,14 +74,15 @@
             // listadoDeToolStripMenuItem
             // 
             this.listadoDeToolStripMenuItem.Name = "listadoDeToolStripMenuItem";
-            this.listadoDeToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.listadoDeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listadoDeToolStripMenuItem.Text = "Listado de Articulos";
             this.listadoDeToolStripMenuItem.Click += new System.EventHandler(this.listadoDeToolStripMenuItem_Click);
             // 
             // marcasToolStripMenuItem
             // 
             this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listadoDeMarcasToolStripMenuItem});
+            this.listadoDeMarcasToolStripMenuItem,
+            this.agregarMarcaToolStripMenuItem});
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
             this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.marcasToolStripMenuItem.Text = "Marcas";
@@ -87,13 +90,21 @@
             // listadoDeMarcasToolStripMenuItem
             // 
             this.listadoDeMarcasToolStripMenuItem.Name = "listadoDeMarcasToolStripMenuItem";
-            this.listadoDeMarcasToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.listadoDeMarcasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listadoDeMarcasToolStripMenuItem.Text = "Listado de Marcas";
+            // 
+            // agregarMarcaToolStripMenuItem
+            // 
+            this.agregarMarcaToolStripMenuItem.Name = "agregarMarcaToolStripMenuItem";
+            this.agregarMarcaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.agregarMarcaToolStripMenuItem.Text = "Agregar Marca";
+            this.agregarMarcaToolStripMenuItem.Click += new System.EventHandler(this.agregarMarcaToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem
             // 
             this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listadoDeCategoriasToolStripMenuItem});
+            this.listadoDeCategoriasToolStripMenuItem,
+            this.agregarCategoriaToolStripMenuItem});
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
             this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.categoriasToolStripMenuItem.Text = "Categorias";
@@ -103,6 +114,12 @@
             this.listadoDeCategoriasToolStripMenuItem.Name = "listadoDeCategoriasToolStripMenuItem";
             this.listadoDeCategoriasToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.listadoDeCategoriasToolStripMenuItem.Text = "Listado de Categorias";
+            // 
+            // agregarCategoriaToolStripMenuItem
+            // 
+            this.agregarCategoriaToolStripMenuItem.Name = "agregarCategoriaToolStripMenuItem";
+            this.agregarCategoriaToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.agregarCategoriaToolStripMenuItem.Text = "Agregar Categoria";
             // 
             // PruebaPrincipal
             // 
@@ -130,5 +147,7 @@
         private System.Windows.Forms.ToolStripMenuItem listadoDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listadoDeMarcasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listadoDeCategoriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarMarcaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem agregarCategoriaToolStripMenuItem;
     }
 }
