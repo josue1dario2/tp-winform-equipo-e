@@ -177,8 +177,8 @@
             this.txtbURL.Name = "txtbURL";
             this.txtbURL.Size = new System.Drawing.Size(252, 22);
             this.txtbURL.TabIndex = 18;
-            
-
+            this.txtbURL.TextChanged += new System.EventHandler(this.txtbURL_TextChanged);
+            //this.txtbURL.Validating += new System.ComponentModel.CancelEventHandler(this.txtbURL_Validating);
             // 
             // btnAgregar
             // 
@@ -212,7 +212,7 @@
             this.numPrecio.Size = new System.Drawing.Size(120, 22);
             this.numPrecio.TabIndex = 21;
             // 
-            // frmAgregarArticulos
+            // AgregarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -234,7 +234,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnVolver);
-            this.Name = "frmAgregarArticulos";
+            this.Name = "AgregarArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulos";
             this.Load += new System.EventHandler(this.frmAgregarArticulos_Load);

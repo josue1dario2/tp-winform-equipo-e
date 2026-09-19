@@ -155,5 +155,10 @@ namespace TP_WinForm_equipo_e
             AgregarArticulos ventana = new AgregarArticulos();
             ventana.ShowDialog();
         }
+
+        private void AdministrarArticulos_Activated(object sender, EventArgs e)
+        {
+            cargarArticulos();
+        }
     }
 }

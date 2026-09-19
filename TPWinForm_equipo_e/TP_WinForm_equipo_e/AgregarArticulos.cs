@@ -27,6 +27,7 @@ namespace TP_WinForm_equipo_e
 
         private void frmAgregarArticulos_Load(object sender, EventArgs e)
         {
+            numPrecio.Minimum = 1;
             MarcaNegocio negocioMar = new MarcaNegocio();
             List<Marca> listaMarcas = negocioMar.Listar();
 
@@ -124,7 +125,7 @@ namespace TP_WinForm_equipo_e
 
         private bool ValidarCampoObligatorio(TextBox textBox, int largoCadena )
         {
-            string mensajeError = "El campo es obligatorio";
+            string mensajeError = $"El campo {textBox.Name} es obligatorio";
             if (string.IsNullOrWhiteSpace(textBox.Text))
             {
                 MessageBox.Show(mensajeError, "Validación",
@@ -140,5 +141,27 @@ namespace TP_WinForm_equipo_e
             }
             return true;
         }
+
+        
+
+
+
+        private void txtbURL_TextChanged(object sender, EventArgs e)
+        {
+            if (txtbURL.Text != null)
+            {
+                try
+                {
+                    pictBImagArticulos.Load(txtbURL.Text.ToString());
+                }
+                catch (Exception)
+                {
+
+                    
+                }
+            }
+        }
+
+        
     }
 }

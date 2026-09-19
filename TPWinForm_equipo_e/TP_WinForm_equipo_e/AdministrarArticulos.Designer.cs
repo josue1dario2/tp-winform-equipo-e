@@ -111,6 +111,7 @@
             this.Name = "AdministrarArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Articulos";
+            this.Activated += new System.EventHandler(this.AdministrarArticulos_Activated);
             this.Load += new System.EventHandler(this.listadoArticulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).EndInit();
