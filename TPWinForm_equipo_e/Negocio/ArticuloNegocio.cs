@@ -108,12 +108,13 @@ namespace Negocio
         }
         */
 
-        public void Agregar(Articulo nuevo)
+        public int Agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) VALUES (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio); SELECT @@IDENTITY;");
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) " +
+                                     "VALUES (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio); SELECT @@IDENTITY;");
 
                 datos.setearParametro("@codigo", nuevo.Codigo);
                 datos.setearParametro("@nombre", nuevo.Nombre);
@@ -123,40 +124,16 @@ namespace Negocio
                 datos.setearParametro("@precio", nuevo.Precio);
 
                 int idArticulo = datos.obtenerId();
+                nuevo.Id = idArticulo;   // ← asignar al objeto
 
-                if (nuevo.Imagenes != null && nuevo.Imagenes.Count > 0)
-                {
-                    foreach (var imagen in nuevo.Imagenes)
-                    {
-                        AccesoDatos datosImagen = new AccesoDatos();
-                        try
-                        {
-                            datosImagen.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @imagenUrl)");
-                            datosImagen.setearParametro("@idArticulo", idArticulo);
-                            datosImagen.setearParametro("@imagenUrl", imagen.ImagenUrl);
-
-                            datosImagen.ejecutarAccion();
-                        }
-                        catch (Exception ex)
-                        {
-                            throw ex;
-                        }
-                        finally
-                        {
-                            datosImagen.cerrarConexion();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                return idArticulo;
             }
             finally
             {
                 datos.cerrarConexion();
             }
         }
+
 
         public void Eliminar(int id)
         {

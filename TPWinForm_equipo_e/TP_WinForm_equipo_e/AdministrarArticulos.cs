@@ -149,5 +149,11 @@ namespace TP_WinForm_equipo_e
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarArticulos ventana = new AgregarArticulos();
+            ventana.ShowDialog();
+        }
     }
 }
