@@ -61,7 +61,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(768, 24);
-            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // articulosToolStripMenuItem
@@ -122,7 +122,7 @@
             this.BotonActualizar.Location = new System.Drawing.Point(12, 37);
             this.BotonActualizar.Name = "BotonActualizar";
             this.BotonActualizar.Size = new System.Drawing.Size(128, 45);
-            this.BotonActualizar.TabIndex = 5;
+            this.BotonActualizar.TabIndex = 1;
             this.BotonActualizar.Text = "Actualizar";
             this.BotonActualizar.UseVisualStyleBackColor = true;
             this.BotonActualizar.Click += new System.EventHandler(this.BotonActualizar_Click);

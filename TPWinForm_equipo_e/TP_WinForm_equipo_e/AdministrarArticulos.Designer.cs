@@ -49,7 +49,8 @@
             this.dgvArticulos.RowHeadersWidth = 51;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.Size = new System.Drawing.Size(653, 245);
-            this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.StandardTab = true;
+            this.dgvArticulos.TabIndex = 1;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnVolver
@@ -60,7 +61,7 @@
             this.btnVolver.MinimumSize = new System.Drawing.Size(109, 0);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(109, 27);
-            this.btnVolver.TabIndex = 2;
+            this.btnVolver.TabIndex = 4;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -82,7 +83,7 @@
             this.btnEliminar.MinimumSize = new System.Drawing.Size(109, 0);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(109, 27);
-            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -95,7 +96,7 @@
             this.btnAgregar.MinimumSize = new System.Drawing.Size(109, 0);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(109, 27);
-            this.btnAgregar.TabIndex = 5;
+            this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -108,7 +109,7 @@
             this.btnModificar.MinimumSize = new System.Drawing.Size(109, 0);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(109, 27);
-            this.btnModificar.TabIndex = 6;
+            this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);

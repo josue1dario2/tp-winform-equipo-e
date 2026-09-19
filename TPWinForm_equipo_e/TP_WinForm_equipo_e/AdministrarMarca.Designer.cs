@@ -49,7 +49,7 @@
             this.dvgListadoMarcas.Location = new System.Drawing.Point(24, 79);
             this.dvgListadoMarcas.Name = "dvgListadoMarcas";
             this.dvgListadoMarcas.Size = new System.Drawing.Size(265, 224);
-            this.dvgListadoMarcas.TabIndex = 1;
+            this.dvgListadoMarcas.TabIndex = 2;
             this.dvgListadoMarcas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgListadoMarcas_CellClick);
             // 
             // lbMarcaDetalles
@@ -86,7 +86,7 @@
             this.textboxNombreMarca.Location = new System.Drawing.Point(341, 109);
             this.textboxNombreMarca.Name = "textboxNombreMarca";
             this.textboxNombreMarca.Size = new System.Drawing.Size(154, 20);
-            this.textboxNombreMarca.TabIndex = 5;
+            this.textboxNombreMarca.TabIndex = 0;
             // 
             // botonAgregarMarca
             // 
@@ -94,7 +94,7 @@
             this.botonAgregarMarca.Location = new System.Drawing.Point(515, 103);
             this.botonAgregarMarca.Name = "botonAgregarMarca";
             this.botonAgregarMarca.Size = new System.Drawing.Size(88, 30);
-            this.botonAgregarMarca.TabIndex = 6;
+            this.botonAgregarMarca.TabIndex = 1;
             this.botonAgregarMarca.Text = "Agregar";
             this.botonAgregarMarca.UseVisualStyleBackColor = true;
             this.botonAgregarMarca.Click += new System.EventHandler(this.botonAgregarMarca_Click);
@@ -104,7 +104,7 @@
             this.textBoxModificarEliminarMarca.Location = new System.Drawing.Point(341, 237);
             this.textBoxModificarEliminarMarca.Name = "textBoxModificarEliminarMarca";
             this.textBoxModificarEliminarMarca.Size = new System.Drawing.Size(195, 20);
-            this.textBoxModificarEliminarMarca.TabIndex = 7;
+            this.textBoxModificarEliminarMarca.TabIndex = 3;
             // 
             // BotonModificar
             // 
@@ -112,7 +112,7 @@
             this.BotonModificar.Location = new System.Drawing.Point(341, 273);
             this.BotonModificar.Name = "BotonModificar";
             this.BotonModificar.Size = new System.Drawing.Size(88, 30);
-            this.BotonModificar.TabIndex = 8;
+            this.BotonModificar.TabIndex = 4;
             this.BotonModificar.Text = "Modificar";
             this.BotonModificar.UseVisualStyleBackColor = true;
             this.BotonModificar.Click += new System.EventHandler(this.BotonModificar_Click);
@@ -123,7 +123,7 @@
             this.BotonEliminar.Location = new System.Drawing.Point(448, 273);
             this.BotonEliminar.Name = "BotonEliminar";
             this.BotonEliminar.Size = new System.Drawing.Size(88, 30);
-            this.BotonEliminar.TabIndex = 9;
+            this.BotonEliminar.TabIndex = 5;
             this.BotonEliminar.Text = "Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = true;
             this.BotonEliminar.Click += new System.EventHandler(this.BotonEliminar_Click);
@@ -134,7 +134,7 @@
             this.btnVolverMarcas.Location = new System.Drawing.Point(394, 346);
             this.btnVolverMarcas.Name = "btnVolverMarcas";
             this.btnVolverMarcas.Size = new System.Drawing.Size(77, 29);
-            this.btnVolverMarcas.TabIndex = 10;
+            this.btnVolverMarcas.TabIndex = 6;
             this.btnVolverMarcas.Text = "Volver";
             this.btnVolverMarcas.UseVisualStyleBackColor = true;
             this.btnVolverMarcas.Click += new System.EventHandler(this.button1_Click);

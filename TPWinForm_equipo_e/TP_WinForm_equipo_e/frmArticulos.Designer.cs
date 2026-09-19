@@ -47,7 +47,7 @@
             this.btnAgregarArticulo.Location = new System.Drawing.Point(48, 357);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(131, 23);
-            this.btnAgregarArticulo.TabIndex = 1;
+            this.btnAgregarArticulo.TabIndex = 0;
             this.btnAgregarArticulo.Text = "Agregar Articulo";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.button1_Click);
@@ -57,7 +57,7 @@
             this.btnEliminarArticulo.Location = new System.Drawing.Point(205, 357);
             this.btnEliminarArticulo.Name = "btnEliminarArticulo";
             this.btnEliminarArticulo.Size = new System.Drawing.Size(120, 24);
-            this.btnEliminarArticulo.TabIndex = 2;
+            this.btnEliminarArticulo.TabIndex = 1;
             this.btnEliminarArticulo.Text = "Eliminar Articulo";
             this.btnEliminarArticulo.UseVisualStyleBackColor = true;
             this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);

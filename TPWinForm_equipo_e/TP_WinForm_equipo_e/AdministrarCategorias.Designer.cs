@@ -48,7 +48,7 @@
             this.BotonEliminar.Location = new System.Drawing.Point(445, 277);
             this.BotonEliminar.Name = "BotonEliminar";
             this.BotonEliminar.Size = new System.Drawing.Size(88, 30);
-            this.BotonEliminar.TabIndex = 18;
+            this.BotonEliminar.TabIndex = 5;
             this.BotonEliminar.Text = "Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = true;
             this.BotonEliminar.Click += new System.EventHandler(this.BotonEliminar_Click);
@@ -59,7 +59,7 @@
             this.BotonModificar.Location = new System.Drawing.Point(338, 277);
             this.BotonModificar.Name = "BotonModificar";
             this.BotonModificar.Size = new System.Drawing.Size(88, 30);
-            this.BotonModificar.TabIndex = 17;
+            this.BotonModificar.TabIndex = 4;
             this.BotonModificar.Text = "Modificar";
             this.BotonModificar.UseVisualStyleBackColor = true;
             this.BotonModificar.Click += new System.EventHandler(this.BotonModificar_Click);
@@ -69,7 +69,7 @@
             this.textBoxModificarEliminarCategoria.Location = new System.Drawing.Point(338, 240);
             this.textBoxModificarEliminarCategoria.Name = "textBoxModificarEliminarCategoria";
             this.textBoxModificarEliminarCategoria.Size = new System.Drawing.Size(195, 20);
-            this.textBoxModificarEliminarCategoria.TabIndex = 16;
+            this.textBoxModificarEliminarCategoria.TabIndex = 3;
             // 
             // botonAgregarCategoria
             // 
@@ -77,7 +77,7 @@
             this.botonAgregarCategoria.Location = new System.Drawing.Point(521, 87);
             this.botonAgregarCategoria.Name = "botonAgregarCategoria";
             this.botonAgregarCategoria.Size = new System.Drawing.Size(88, 30);
-            this.botonAgregarCategoria.TabIndex = 15;
+            this.botonAgregarCategoria.TabIndex = 1;
             this.botonAgregarCategoria.Text = "Agregar";
             this.botonAgregarCategoria.UseVisualStyleBackColor = true;
             this.botonAgregarCategoria.Click += new System.EventHandler(this.botonAgregarCategoria_Click);
@@ -87,7 +87,7 @@
             this.textboxNombreCategoria.Location = new System.Drawing.Point(338, 93);
             this.textboxNombreCategoria.Name = "textboxNombreCategoria";
             this.textboxNombreCategoria.Size = new System.Drawing.Size(159, 20);
-            this.textboxNombreCategoria.TabIndex = 14;
+            this.textboxNombreCategoria.TabIndex = 0;
             // 
             // lbAgregar
             // 
@@ -126,7 +126,7 @@
             this.dvgListadoCategorias.Location = new System.Drawing.Point(27, 66);
             this.dvgListadoCategorias.Name = "dvgListadoCategorias";
             this.dvgListadoCategorias.Size = new System.Drawing.Size(265, 271);
-            this.dvgListadoCategorias.TabIndex = 10;
+            this.dvgListadoCategorias.TabIndex = 2;
             this.dvgListadoCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgListadoCategorias_CellClick);
             // 
             // btnVolverCategorias
@@ -135,7 +135,7 @@
             this.btnVolverCategorias.Location = new System.Drawing.Point(394, 357);
             this.btnVolverCategorias.Name = "btnVolverCategorias";
             this.btnVolverCategorias.Size = new System.Drawing.Size(80, 29);
-            this.btnVolverCategorias.TabIndex = 19;
+            this.btnVolverCategorias.TabIndex = 6;
             this.btnVolverCategorias.Text = "Volver";
             this.btnVolverCategorias.UseVisualStyleBackColor = true;
             this.btnVolverCategorias.Click += new System.EventHandler(this.btnVolverCategorias_Click);

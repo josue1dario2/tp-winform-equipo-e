@@ -56,7 +56,7 @@
             this.btnVolver.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(79, 29);
-            this.btnVolver.TabIndex = 3;
+            this.btnVolver.TabIndex = 8;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
@@ -133,7 +133,7 @@
             this.txtbCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbCodigo.Name = "txtbCodigo";
             this.txtbCodigo.Size = new System.Drawing.Size(190, 20);
-            this.txtbCodigo.TabIndex = 10;
+            this.txtbCodigo.TabIndex = 0;
             // 
             // txtbNombre
             // 
@@ -141,7 +141,7 @@
             this.txtbNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbNombre.Name = "txtbNombre";
             this.txtbNombre.Size = new System.Drawing.Size(190, 20);
-            this.txtbNombre.TabIndex = 11;
+            this.txtbNombre.TabIndex = 1;
             // 
             // txtbDescrip
             // 
@@ -149,7 +149,7 @@
             this.txtbDescrip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbDescrip.Name = "txtbDescrip";
             this.txtbDescrip.Size = new System.Drawing.Size(190, 20);
-            this.txtbDescrip.TabIndex = 12;
+            this.txtbDescrip.TabIndex = 2;
             // 
             // cboCategorias
             // 
@@ -160,7 +160,7 @@
             this.cboCategorias.MinimumSize = new System.Drawing.Size(114, 0);
             this.cboCategorias.Name = "cboCategorias";
             this.cboCategorias.Size = new System.Drawing.Size(114, 21);
-            this.cboCategorias.TabIndex = 15;
+            this.cboCategorias.TabIndex = 6;
             // 
             // cboMarcas
             // 
@@ -171,7 +171,7 @@
             this.cboMarcas.MinimumSize = new System.Drawing.Size(114, 0);
             this.cboMarcas.Name = "cboMarcas";
             this.cboMarcas.Size = new System.Drawing.Size(114, 21);
-            this.cboMarcas.TabIndex = 16;
+            this.cboMarcas.TabIndex = 5;
             // 
             // lblImagen
             // 
@@ -190,7 +190,7 @@
             this.txtbURL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtbURL.Name = "txtbURL";
             this.txtbURL.Size = new System.Drawing.Size(190, 20);
-            this.txtbURL.TabIndex = 18;
+            this.txtbURL.TabIndex = 4;
             this.txtbURL.TextChanged += new System.EventHandler(this.txtbURL_TextChanged);
             // 
             // btnAgregar
@@ -200,7 +200,7 @@
             this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(79, 29);
-            this.btnAgregar.TabIndex = 19;
+            this.btnAgregar.TabIndex = 7;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -226,7 +226,7 @@
             0});
             this.numPrecio.Name = "numPrecio";
             this.numPrecio.Size = new System.Drawing.Size(90, 20);
-            this.numPrecio.TabIndex = 21;
+            this.numPrecio.TabIndex = 3;
             // 
             // AgregarArticulos
             // 
