@@ -17,6 +17,8 @@ namespace TP_WinForm_equipo_e
     public partial class AdministrarArticulos : Form
     {
         private List<Articulo> listaArticulos;
+        
+
         public AdministrarArticulos()
         {
             InitializeComponent();
@@ -25,21 +27,53 @@ namespace TP_WinForm_equipo_e
         private void listadoArticulos_Load(object sender, EventArgs e)
         {
             pbxArticulos.SizeMode = PictureBoxSizeMode.StretchImage;
-
             cargarArticulos();
         }
 
-
-       
-
         public void cargarArticulos()
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulos = negocio.Listar();
-            dgvArticulos.DataSource = listaArticulos;
+            try
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                listaArticulos = negocio.Listar();
+                dgvArticulos.DataSource = listaArticulos;
+                ocultarColumnas();
 
-            //pbxArticulos.Load(listaArticulos[0].Im
-                //.Imagenes.ToString());
+                // Lista vacía: SelectionChanged no dispara con una fila, así que ponemos el placeholder a mano
+                if (listaArticulos.Count == 0)
+                    cargarImagen(null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void ocultarColumnas()
+        {
+            if (dgvArticulos.Columns["Imagenes"] != null)
+                dgvArticulos.Columns["Imagenes"].Visible = false;
+            if (dgvArticulos.Columns["Id"] != null)
+                dgvArticulos.Columns["Id"].Visible = false;
+        }
+
+
+
+        private void cargarImagen(string url)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(url))
+                    pbxArticulos.Image = Properties.Resources.ImagenDefault;
+                else
+                    pbxArticulos.Load(url);
+            }
+            catch (Exception ex)
+            {
+                // URL rota o sin conexión
+                //MessageBox.Show(ex.Message);
+                pbxArticulos.Image = Properties.Resources.ImagenDefault;
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -51,6 +85,34 @@ namespace TP_WinForm_equipo_e
         {
             cargarArticulos();
            
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow == null)
+                return;
+
+            Articulo seleccionado = dgvArticulos.CurrentRow.DataBoundItem as Articulo;
+            if (seleccionado == null)
+                return;
+
+            string url = seleccionado.Imagenes.FirstOrDefault()?.ImagenUrl;
+            cargarImagen(url);
+
+            /*
+            if (dgvArticulos.CurrentRow == null)
+                return;
+
+            Articulo seleccionado = dgvArticulos.CurrentRow.DataBoundItem as Articulo;
+            if (seleccionado == null)
+                return;
+
+            string url = seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0
+       ? seleccionado.Imagenes[0].ImagenUrl
+       : null;
+
+            cargarImagen(seleccionado.Id.ToString());
+            */
         }
     }
 }

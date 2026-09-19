@@ -45,6 +45,7 @@
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.Size = new System.Drawing.Size(965, 302);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // btnActualizar
             // 
@@ -70,7 +71,7 @@
             // 
             this.pbxArticulos.Location = new System.Drawing.Point(1006, 39);
             this.pbxArticulos.Name = "pbxArticulos";
-            this.pbxArticulos.Size = new System.Drawing.Size(330, 302);
+            this.pbxArticulos.Size = new System.Drawing.Size(366, 302);
             this.pbxArticulos.TabIndex = 3;
             this.pbxArticulos.TabStop = false;
             // 
@@ -78,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1348, 500);
+            this.ClientSize = new System.Drawing.Size(1384, 500);
             this.Controls.Add(this.pbxArticulos);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnActualizar);

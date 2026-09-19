@@ -20,6 +20,56 @@ namespace Negocio
             try
             {
                 datos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, M.Descripcion AS Marca, A.IdCategoria, C.Descripcion AS Categoria, A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria");
+                datos.ejecutarLectura();
+
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = datos.Lector.SafeInt("Id");
+                    aux.Codigo = datos.Lector.SafeString("Codigo");
+                    aux.Nombre = datos.Lector.SafeString("Nombre");
+                    aux.Descripcion = datos.Lector.SafeString("Descripcion");
+
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = datos.Lector.SafeInt("IdMarca");
+                    aux.Marca.Descripcion = datos.Lector.SafeString("Marca");
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = datos.Lector.SafeInt("IdCategoria");
+                    aux.Categoria.Descripcion = datos.Lector.SafeString("Categoria");
+
+                    aux.Precio = datos.Lector.SafeDecimal("Precio");
+
+                    // 🔑 Cargar imágenes desde la DB
+                    aux.Imagenes = imagenNegocio.Listar(aux.Id);
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        /*
+        public List<Articulo> Listar()
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.IdMarca, M.Descripcion AS Marca, A.IdCategoria, C.Descripcion AS Categoria, A.Precio FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria");
 
                 datos.ejecutarLectura();
 
@@ -56,6 +106,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        */
 
         public void Agregar(Articulo nuevo)
         {
