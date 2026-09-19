@@ -13,8 +13,17 @@ using System.Windows.Forms;
 
 namespace TP_WinForm_equipo_e
 {
+    public enum ModoFormulario
+    {
+        Agregar,
+        Modificar
+    }
     public partial class AgregarArticulos : Form
     {
+        public ModoFormulario Modo { get; set; }
+        public Articulo ArticuloSeleccionado { get; set; }
+        public int idImagenSeleccionad { get; set; }
+
         public AgregarArticulos()
         {
             InitializeComponent();
@@ -25,8 +34,82 @@ namespace TP_WinForm_equipo_e
             this.Close();
         }
 
+        private void settearControles()
+        {
+            switch (Modo)
+            {
+                case ModoFormulario.Agregar:
+                    this.Text = "Agregar artículos";
+                    btnAgregar.Text = "Agregar";
+                    pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
+                    break;
+                case ModoFormulario.Modificar:
+                    this.Text = "Modificar artículos";
+                    btnAgregar.Text = "Modificar";
+                    cargarDatosCampos();
+                    cargarImagen(txtbURL.Text.ToString());
+
+                    break;
+            }
+        }
+        private void cargarDatosCampos()
+        {
+            try
+            {
+                
+                txtbCodigo.Text = ArticuloSeleccionado.Codigo;
+                txtbNombre.Text = ArticuloSeleccionado.Nombre;
+                txtbDescrip.Text = ArticuloSeleccionado.Descripcion;
+                if (ArticuloSeleccionado.Precio > 0)
+                {
+                    numPrecio.Value = ArticuloSeleccionado.Precio;
+                }
+                else
+                {
+                    numPrecio.Value = numPrecio.Minimum;
+                }
+
+
+                cboMarcas.SelectedValue = ArticuloSeleccionado.Marca.Id;
+                cboCategorias.SelectedValue = ArticuloSeleccionado.Categoria.Id;
+                var imagenSeleccionada = ArticuloSeleccionado.Imagenes.FirstOrDefault();
+
+                if (imagenSeleccionada != null)
+                {
+                    txtbURL.Text = imagenSeleccionada.ImagenUrl;
+                    // Guardás el Id en una variable para usarlo después
+                    int idImagen = imagenSeleccionada.Id;
+                }
+            }
+            catch (Exception)
+            {
+
+           
+            }
+            
+            
+
+        }
+
+        private void cargarImagen(string url)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(url))
+                    pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
+                else
+                    pictBImagArticulos.Load(url);
+            }
+            catch (Exception ex)
+            {
+                // URL rota o sin conexión
+
+                pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
+            }
+        }
         private void frmAgregarArticulos_Load(object sender, EventArgs e)
         {
+            
             numPrecio.Minimum = 1;
             MarcaNegocio negocioMar = new MarcaNegocio();
             List<Marca> listaMarcas = negocioMar.Listar();
@@ -36,7 +119,7 @@ namespace TP_WinForm_equipo_e
 
             try
             {
-                pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
+                //pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
                 pictBImagArticulos.SizeMode = PictureBoxSizeMode.Zoom;
                 cboMarcas.DataSource = listaMarcas;
                 cboMarcas.DisplayMember = "Descripcion";
@@ -44,6 +127,8 @@ namespace TP_WinForm_equipo_e
                 cboCategorias.DataSource = listaCategorias;
                 cboCategorias.DisplayMember = "Descripcion";
                 cboCategorias.ValueMember = "Id";
+
+                settearControles();
 
             }
             catch (Exception)
@@ -67,34 +152,18 @@ namespace TP_WinForm_equipo_e
             // 2. Si llegó acá, todo está ok → guardar en la BD
             try
             {
-                Articulo nuevo = new Articulo();
+
+                switch (Modo)
+                {
+                    case ModoFormulario.Agregar:
+                        AgregarArticulo();
+                        break;
+                    case ModoFormulario.Modificar:
+                        ModificarArticulo();
+
+                        break;
+                }
                 
-                nuevo.Codigo = txtbCodigo.Text.ToString();
-                nuevo.Marca = new Marca();
-                nuevo.Marca.Id = (int)cboMarcas.SelectedValue;
-                nuevo.Nombre = txtbNombre.Text.ToString();
-                nuevo.Descripcion = txtbDescrip.Text.ToString();
-                nuevo.Precio = numPrecio.Value;
-                nuevo.Categoria = new Categoria();
-                nuevo.Categoria.Id = (int)cboCategorias.SelectedValue;
-                
-                //nuevaIma.ImagenUrl = txtbURL.Text.ToString();
-
-
-
-
-                ArticuloNegocio negocio = new ArticuloNegocio();
-                int idArticulo = negocio.Agregar(nuevo);
-
-                Imagen nuevaIma = new Imagen(idArticulo, txtbURL.Text.Trim());
-
-                ImagenNegocio imaNegocio = new ImagenNegocio();
-                imaNegocio.Agregar(nuevaIma);
-
-
-
-
-                MessageBox.Show("Artículo agregado correctamente.");
                 this.Close();
             }
             catch (Exception ex)
@@ -103,6 +172,62 @@ namespace TP_WinForm_equipo_e
             }
         }
 
+        private Articulo ArmarArticulo()
+        {
+            Articulo articulo = new Articulo();
+
+            articulo.Codigo = txtbCodigo.Text.Trim();
+            articulo.Nombre = txtbNombre.Text.Trim();
+            articulo.Descripcion = txtbDescrip.Text.Trim();
+            articulo.Precio = numPrecio.Value;
+
+            articulo.Marca = new Marca { Id = (int)cboMarcas.SelectedValue };
+            articulo.Categoria = new Categoria { Id = (int)cboCategorias.SelectedValue };
+
+            return articulo;
+        }
+
+        private void AgregarArticulo()
+        {
+            Articulo nuevo = ArmarArticulo();
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            int idArticulo = negocio.Agregar(nuevo);
+
+            Imagen nuevaIma = new Imagen(idArticulo, txtbURL.Text.Trim());
+            ImagenNegocio imaNegocio = new ImagenNegocio();
+            imaNegocio.Agregar(nuevaIma);
+
+            MessageBox.Show("Artículo agregado correctamente.");
+        }
+
+        private void ModificarArticulo()
+        {
+            Articulo articulo = ArmarArticulo();
+            articulo.Id = ArticuloSeleccionado.Id;
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            negocio.Modificar(articulo);
+
+            // 🔑 Modificar la imagen mostrada
+            var imagenSeleccionada = ArticuloSeleccionado.Imagenes.FirstOrDefault();
+            if (imagenSeleccionada != null)
+            {
+                Imagen imagenModificada = new Imagen();
+                imagenModificada.Id = imagenSeleccionada.Id; // el Id que ya tenía en la DB
+                imagenModificada.IdArticulo = articulo.Id;
+                imagenModificada.ImagenUrl = txtbURL.Text.Trim();
+
+                ImagenNegocio imaNegocio = new ImagenNegocio();
+                imaNegocio.Modificar(imagenModificada);
+            }
+
+            MessageBox.Show("Artículo modificado correctamente.");
+        }
+
+
+        
+        
         private bool ValidarFormulario()
         {
             bool esValido = true;

@@ -34,6 +34,7 @@
             this.pbxArticulos = new System.Windows.Forms.PictureBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).BeginInit();
             this.SuspendLayout();
@@ -51,9 +52,10 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(207, 398);
+            this.btnActualizar.Location = new System.Drawing.Point(606, 398);
+            this.btnActualizar.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(95, 33);
+            this.btnActualizar.Size = new System.Drawing.Size(180, 33);
             this.btnActualizar.TabIndex = 1;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -61,9 +63,10 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(544, 398);
+            this.btnVolver.Location = new System.Drawing.Point(844, 398);
+            this.btnVolver.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(75, 33);
+            this.btnVolver.Size = new System.Drawing.Size(145, 33);
             this.btnVolver.TabIndex = 2;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -79,29 +82,43 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(381, 398);
+            this.btnEliminar.Location = new System.Drawing.Point(422, 398);
+            this.btnEliminar.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 33);
+            this.btnEliminar.Size = new System.Drawing.Size(145, 33);
             this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Text = "Eliminar Articulo";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
             this.btnAgregar.Location = new System.Drawing.Point(33, 398);
+            this.btnAgregar.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(95, 33);
+            this.btnAgregar.Size = new System.Drawing.Size(145, 33);
             this.btnAgregar.TabIndex = 5;
-            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Text = "Agregar Articulo";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(228, 398);
+            this.btnModificar.MinimumSize = new System.Drawing.Size(145, 0);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(145, 33);
+            this.btnModificar.TabIndex = 6;
+            this.btnModificar.Text = "Modificar Articulo";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // AdministrarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1384, 500);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.pbxArticulos);
@@ -127,5 +144,6 @@
         private System.Windows.Forms.PictureBox pbxArticulos;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnModificar;
     }
 }

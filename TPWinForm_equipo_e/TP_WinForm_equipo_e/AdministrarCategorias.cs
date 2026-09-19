@@ -24,6 +24,7 @@ namespace TP_WinForm_equipo_e
         {
             CategoriaNegocio listado = new CategoriaNegocio();
             dvgListadoCategorias.DataSource = listado.Listar();
+            dvgListadoCategorias.Columns["Id"].Visible = false;
         }
 
         private void AdministrarCategorias_Load(object sender, EventArgs e)

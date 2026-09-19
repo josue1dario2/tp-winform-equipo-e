@@ -27,7 +27,9 @@ namespace TP_WinForm_equipo_e
         private void listadoArticulos_Load(object sender, EventArgs e)
         {
             pbxArticulos.SizeMode = PictureBoxSizeMode.StretchImage;
+            
             cargarArticulos();
+            dgvArticulos.Columns["Id"].Visible = false;
         }
 
         public void cargarArticulos()
@@ -153,12 +155,34 @@ namespace TP_WinForm_equipo_e
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             AgregarArticulos ventana = new AgregarArticulos();
+            ventana.Modo = ModoFormulario.Agregar;
             ventana.ShowDialog();
         }
 
         private void AdministrarArticulos_Activated(object sender, EventArgs e)
         {
             cargarArticulos();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                AgregarArticulos ventana = new AgregarArticulos();
+                ventana.Modo = ModoFormulario.Modificar;
+                ventana.ArticuloSeleccionado = seleccionado;
+                ventana.idImagenSeleccionad = 0; 
+                ventana.ShowDialog();
+
+                cargarArticulos();
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccioná un artículo para modificar.");
+            }
+
         }
     }
 }
