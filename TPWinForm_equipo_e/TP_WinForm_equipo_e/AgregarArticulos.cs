@@ -126,7 +126,8 @@ namespace TP_WinForm_equipo_e
                 cboCategorias.DataSource = listaCategorias;
                 cboCategorias.DisplayMember = "Descripcion";
                 cboCategorias.ValueMember = "Id";
-
+                cboMarcas.DropDownStyle = ComboBoxStyle.DropDownList;
+                cboCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
                 settearControles();
             }
             catch (Exception)

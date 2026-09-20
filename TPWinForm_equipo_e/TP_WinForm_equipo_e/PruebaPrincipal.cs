@@ -51,6 +51,7 @@ namespace TP_WinForm_equipo_e
                 cboMarca.DataSource = listaMarcas;
                 cboMarca.DisplayMember = "Descripcion";
                 cboMarca.ValueMember = "Id";
+                cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
 
                 CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
                 List<Categoria> listaCategorias = categoriaNegocio.Listar();
@@ -58,7 +59,7 @@ namespace TP_WinForm_equipo_e
                 cboCategoria.DataSource = listaCategorias;
                 cboCategoria.DisplayMember = "Descripcion";
                 cboCategoria.ValueMember = "Id";
-
+                cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
                 txtPrecioMin.Text = "0";
             }
             catch (Exception ex)
