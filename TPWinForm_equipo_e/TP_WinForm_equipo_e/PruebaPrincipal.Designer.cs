@@ -44,7 +44,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 139);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(745, 481);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.flowLayoutPanel1.TabIndex = 6;
             // 
             // menuStrip1
             // 
@@ -109,7 +109,7 @@
             this.txtFiltro.Location = new System.Drawing.Point(249, 42);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(229, 20);
-            this.txtFiltro.TabIndex = 4;
+            this.txtFiltro.TabIndex = 0;
             // 
             // cboMarca
             // 
@@ -117,7 +117,7 @@
             this.cboMarca.Location = new System.Drawing.Point(29, 96);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(121, 21);
-            this.cboMarca.TabIndex = 5;
+            this.cboMarca.TabIndex = 1;
             // 
             // label1
             // 
@@ -136,7 +136,7 @@
             this.cboCategoria.Location = new System.Drawing.Point(171, 96);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(121, 21);
-            this.cboCategoria.TabIndex = 7;
+            this.cboCategoria.TabIndex = 2;
             // 
             // label2
             // 
@@ -153,7 +153,7 @@
             this.txtPrecioMin.Location = new System.Drawing.Point(316, 96);
             this.txtPrecioMin.Name = "txtPrecioMin";
             this.txtPrecioMin.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecioMin.TabIndex = 9;
+            this.txtPrecioMin.TabIndex = 3;
             // 
             // label3
             // 
@@ -170,7 +170,7 @@
             this.txtPrecioMax.Location = new System.Drawing.Point(436, 96);
             this.txtPrecioMax.Name = "txtPrecioMax";
             this.txtPrecioMax.Size = new System.Drawing.Size(100, 20);
-            this.txtPrecioMax.TabIndex = 11;
+            this.txtPrecioMax.TabIndex = 4;
             // 
             // label4
             // 
@@ -187,7 +187,7 @@
             this.btnFiltrar.Location = new System.Drawing.Point(567, 77);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(115, 39);
-            this.btnFiltrar.TabIndex = 13;
+            this.btnFiltrar.TabIndex = 5;
             this.btnFiltrar.Text = "Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.button1_Click);
