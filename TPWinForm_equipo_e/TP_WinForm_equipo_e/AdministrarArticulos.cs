@@ -16,10 +16,17 @@ namespace TP_WinForm_equipo_e
     public partial class AdministrarArticulos : Form
     {
         private List<Articulo> listaArticulos;
+        private Articulo articuloModificar;
 
         public AdministrarArticulos()
         {
             InitializeComponent();
+        }
+
+        public AdministrarArticulos(Articulo articulo)
+        {
+            InitializeComponent();
+            articuloModificar = articulo;
         }
 
         private void listadoArticulos_Load(object sender, EventArgs e)
@@ -37,7 +44,7 @@ namespace TP_WinForm_equipo_e
                 listaArticulos = negocio.Listar();
                 dgvArticulos.DataSource = listaArticulos;
 
-                ocultarYFormatearColumnas();
+                cultarYFormatearColumnas();
 
                 if (listaArticulos.Count == 0)
                 {
@@ -51,7 +58,7 @@ namespace TP_WinForm_equipo_e
             }
         }
 
-        private void ocultarYFormatearColumnas()
+        private void cultarYFormatearColumnas()
         {
             if (dgvArticulos.Columns["Imagenes"] != null)
                 dgvArticulos.Columns["Imagenes"].Visible = false;

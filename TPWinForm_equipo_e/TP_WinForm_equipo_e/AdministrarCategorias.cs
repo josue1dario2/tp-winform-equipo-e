@@ -50,7 +50,7 @@ namespace TP_WinForm_equipo_e
         {
             if (string.IsNullOrWhiteSpace(textboxNombreCategoria.Text))
             {
-                MessageBox.Show("Por favor, ingresá el nombre de la categoría.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, ingresá el nombre de la categoría (no puede estar vacío ni tener solo espacios).", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -90,30 +90,35 @@ namespace TP_WinForm_equipo_e
             if (IdCategoriaSeleccionada == 0)
             {
                 MessageBox.Show("Por favor, seleccioná una categoría de la lista para modificar.", "Selección requerida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(textBoxModificarEliminarCategoria.Text))
             {
-                DialogResult respuesta = MessageBox.Show("¿Estás seguro de que querés modificar esta categoría?", "Confirmar modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (respuesta == DialogResult.Yes)
+                MessageBox.Show("La descripción no puede estar vacía ni contener únicamente espacios en blanco.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult respuesta = MessageBox.Show("¿Estás seguro de que querés modificar esta categoría?", "Confirmar modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            {
+                Categoria modificar = new Categoria();
+                CategoriaNegocio aplicar = new CategoriaNegocio();
+
+                modificar.Id = IdCategoriaSeleccionada;
+                modificar.Descripcion = textBoxModificarEliminarCategoria.Text.Trim();
+
+                aplicar.Modificar(modificar);
+                cargarCategorias();
+
+                if (lblCategoriaAgregar != null)
                 {
-                    Categoria modificar = new Categoria();
-                    CategoriaNegocio aplicar = new CategoriaNegocio();
-
-                    modificar.Id = IdCategoriaSeleccionada;
-                    modificar.Descripcion = textBoxModificarEliminarCategoria.Text.Trim();
-
-                    aplicar.Modificar(modificar);
-                    cargarCategorias();
-
-                    if (lblCategoriaAgregar != null)
-                    {
-                        lblCategoriaAgregar.Text = "La categoría se modificó exitosamente.";
-                        lblCategoriaAgregar.ForeColor = Color.ForestGreen;
-                    }
-
-                    textBoxModificarEliminarCategoria.Clear();
-                    IdCategoriaSeleccionada = 0;
+                    lblCategoriaAgregar.Text = "La categoría se modificó exitosamente.";
+                    lblCategoriaAgregar.ForeColor = Color.ForestGreen;
                 }
+
+                textBoxModificarEliminarCategoria.Clear();
+                IdCategoriaSeleccionada = 0;
             }
         }
 

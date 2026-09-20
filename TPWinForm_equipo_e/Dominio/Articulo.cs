@@ -23,7 +23,6 @@ namespace Dominio
         {
         }
 
-        // Constructor con datos básicos (sin Id, útil al dar de alta uno nuevo)
         public Articulo(string codigo, string nombre, string descripcion, decimal precio, Marca marca, Categoria categoria)
         {
             Codigo = codigo;
@@ -34,7 +33,6 @@ namespace Dominio
             Categoria = categoria;
         }
 
-        // Constructor completo, con Id (útil cuando el repositorio arma el objeto desde la DB)
         public Articulo(int id, string codigo, string nombre, string descripcion, decimal precio, Marca marca, Categoria categoria, List<Imagen> imagenes)
             : this(codigo, nombre, descripcion, precio, marca, categoria)
         {

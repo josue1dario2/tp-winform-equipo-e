@@ -42,14 +42,14 @@ namespace TP_WinForm_equipo_e
         {
             cargarMarcas();
             IdMarcaSeleccionada = 0;
-            lblMarcaAgregar.Text = ""; 
+            lblMarcaAgregar.Text = "";
         }
 
         private void botonAgregarMarca_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textboxNombreMarca.Text))
             {
-                MessageBox.Show("Por favor, ingresá el nombre de la marca.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, ingresá el nombre de la marca (no puede estar vacío ni tener solo espacios).", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -87,27 +87,32 @@ namespace TP_WinForm_equipo_e
             if (IdMarcaSeleccionada == 0)
             {
                 MessageBox.Show("Por favor, seleccioná una marca de la lista para modificar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(textBoxModificarEliminarMarca.Text))
             {
-                DialogResult respuesta = MessageBox.Show("¿Estás seguro de que querés modificar esta marca?", "Confirmar modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (respuesta == DialogResult.Yes)
-                {
-                    Marca modificar = new Marca();
-                    MarcaNegocio aplicar = new MarcaNegocio();
+                MessageBox.Show("La descripción no puede estar vacía ni contener únicamente espacios en blanco.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                    modificar.Id = IdMarcaSeleccionada;
-                    modificar.Descripcion = textBoxModificarEliminarMarca.Text.Trim();
+            DialogResult respuesta = MessageBox.Show("¿Estás seguro de que querés modificar esta marca?", "Confirmar modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            {
+                Marca modificar = new Marca();
+                MarcaNegocio aplicar = new MarcaNegocio();
 
-                    aplicar.Modificar(modificar);
-                    cargarMarcas();
+                modificar.Id = IdMarcaSeleccionada;
+                modificar.Descripcion = textBoxModificarEliminarMarca.Text.Trim();
 
-                    lblMarcaAgregar.Text = $"La marca se modificó exitosamente.";
-                    lblMarcaAgregar.ForeColor = Color.ForestGreen;
+                aplicar.Modificar(modificar);
+                cargarMarcas();
 
-                    textBoxModificarEliminarMarca.Clear();
-                    IdMarcaSeleccionada = 0;
-                }
+                lblMarcaAgregar.Text = $"La marca se modificó exitosamente.";
+                lblMarcaAgregar.ForeColor = Color.ForestGreen;
+
+                textBoxModificarEliminarMarca.Clear();
+                IdMarcaSeleccionada = 0;
             }
         }
 

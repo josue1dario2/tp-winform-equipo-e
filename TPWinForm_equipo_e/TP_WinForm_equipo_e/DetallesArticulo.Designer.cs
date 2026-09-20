@@ -2,15 +2,8 @@
 {
     partial class DetallesArticulo
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,14 +15,10 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            this.PictureBoxGrande = new System.Windows.Forms.PictureBox();
             this.PanelFlow = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbID = new System.Windows.Forms.Label();
             this.lbCodigo = new System.Windows.Forms.Label();
             this.lbNombre = new System.Windows.Forms.Label();
             this.lbDescripcion = new System.Windows.Forms.Label();
@@ -38,118 +27,137 @@
             this.lbPrecio = new System.Windows.Forms.Label();
             this.BotonModificar = new System.Windows.Forms.Button();
             this.BotonEliminar = new System.Windows.Forms.Button();
-            this.PictureBoxGrande = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxGrande)).BeginInit();
             this.SuspendLayout();
             // 
+            // PictureBoxGrande
+            // 
+            this.PictureBoxGrande.Location = new System.Drawing.Point(12, 12);
+            this.PictureBoxGrande.Name = "PictureBoxGrande";
+            this.PictureBoxGrande.Size = new System.Drawing.Size(220, 200);
+            this.PictureBoxGrande.TabIndex = 0;
+            this.PictureBoxGrande.TabStop = false;
+            // 
             // PanelFlow
             // 
-            this.PanelFlow.Location = new System.Drawing.Point(15, 12);
+            this.PanelFlow.AutoScroll = true;
+            this.PanelFlow.Location = new System.Drawing.Point(15, 306);
             this.PanelFlow.Name = "PanelFlow";
-            this.PanelFlow.Size = new System.Drawing.Size(173, 252);
+            this.PanelFlow.Size = new System.Drawing.Size(520, 90);
             this.PanelFlow.TabIndex = 1;
-            // 
-            // lbID
-            // 
-            this.lbID.AutoSize = true;
-            this.lbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbID.Location = new System.Drawing.Point(9, 283);
-            this.lbID.Name = "lbID";
-            this.lbID.Size = new System.Drawing.Size(50, 31);
-            this.lbID.TabIndex = 2;
-            this.lbID.Text = "ID:";
             // 
             // lbCodigo
             // 
             this.lbCodigo.AutoSize = true;
-            this.lbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCodigo.Location = new System.Drawing.Point(9, 333);
+            this.lbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCodigo.Location = new System.Drawing.Point(250, 15);
             this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(108, 31);
-            this.lbCodigo.TabIndex = 3;
-            this.lbCodigo.Text = "Codigo:";
+            this.lbCodigo.Size = new System.Drawing.Size(56, 17);
+            this.lbCodigo.TabIndex = 2;
+            this.lbCodigo.Text = "Código:";
             // 
             // lbNombre
             // 
             this.lbNombre.AutoSize = true;
-            this.lbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNombre.Location = new System.Drawing.Point(9, 382);
+            this.lbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNombre.Location = new System.Drawing.Point(250, 45);
             this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(118, 31);
-            this.lbNombre.TabIndex = 4;
-            this.lbNombre.Text = "Nombre:";
+            this.lbNombre.Size = new System.Drawing.Size(71, 20);
+            this.lbNombre.TabIndex = 3;
+            this.lbNombre.Text = "Nombre";
+            this.lbNombre.Click += new System.EventHandler(this.lbNombre_Click);
             // 
             // lbDescripcion
             // 
             this.lbDescripcion.AutoSize = true;
-            this.lbDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescripcion.Location = new System.Drawing.Point(9, 425);
+            this.lbDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescripcion.Location = new System.Drawing.Point(250, 80);
             this.lbDescripcion.Name = "lbDescripcion";
-            this.lbDescripcion.Size = new System.Drawing.Size(165, 31);
-            this.lbDescripcion.TabIndex = 5;
-            this.lbDescripcion.Text = "Descripcion:";
+            this.lbDescripcion.Size = new System.Drawing.Size(82, 16);
+            this.lbDescripcion.TabIndex = 4;
+            this.lbDescripcion.Text = "Descripción:";
             // 
             // lbMarca
             // 
             this.lbMarca.AutoSize = true;
-            this.lbMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMarca.Location = new System.Drawing.Point(9, 470);
+            this.lbMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMarca.Location = new System.Drawing.Point(250, 115);
             this.lbMarca.Name = "lbMarca";
-            this.lbMarca.Size = new System.Drawing.Size(104, 31);
-            this.lbMarca.TabIndex = 6;
-            this.lbMarca.Text = "Marca: ";
+            this.lbMarca.Size = new System.Drawing.Size(48, 16);
+            this.lbMarca.TabIndex = 5;
+            this.lbMarca.Text = "Marca:";
             // 
             // lbCategoria
             // 
             this.lbCategoria.AutoSize = true;
-            this.lbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCategoria.Location = new System.Drawing.Point(9, 514);
+            this.lbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCategoria.Location = new System.Drawing.Point(250, 145);
             this.lbCategoria.Name = "lbCategoria";
-            this.lbCategoria.Size = new System.Drawing.Size(140, 31);
-            this.lbCategoria.TabIndex = 7;
-            this.lbCategoria.Text = "Categoria:";
+            this.lbCategoria.Size = new System.Drawing.Size(69, 16);
+            this.lbCategoria.TabIndex = 6;
+            this.lbCategoria.Text = "Categoría:";
             // 
             // lbPrecio
             // 
             this.lbPrecio.AutoSize = true;
-            this.lbPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPrecio.Location = new System.Drawing.Point(9, 558);
+            this.lbPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrecio.ForeColor = System.Drawing.Color.Green;
+            this.lbPrecio.Location = new System.Drawing.Point(250, 175);
             this.lbPrecio.Name = "lbPrecio";
-            this.lbPrecio.Size = new System.Drawing.Size(99, 31);
-            this.lbPrecio.TabIndex = 8;
-            this.lbPrecio.Text = "Precio:";
+            this.lbPrecio.Size = new System.Drawing.Size(59, 20);
+            this.lbPrecio.TabIndex = 7;
+            this.lbPrecio.Text = "$ 0.00";
             // 
             // BotonModificar
             // 
-            this.BotonModificar.Location = new System.Drawing.Point(601, 55);
+            this.BotonModificar.Location = new System.Drawing.Point(158, 238);
             this.BotonModificar.Name = "BotonModificar";
-            this.BotonModificar.Size = new System.Drawing.Size(139, 50);
-            this.BotonModificar.TabIndex = 10;
+            this.BotonModificar.Size = new System.Drawing.Size(90, 35);
+            this.BotonModificar.TabIndex = 8;
             this.BotonModificar.Text = "Modificar";
             this.BotonModificar.UseVisualStyleBackColor = true;
+            this.BotonModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // BotonEliminar
             // 
-            this.BotonEliminar.Location = new System.Drawing.Point(601, 181);
+            this.BotonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BotonEliminar.Location = new System.Drawing.Point(276, 238);
             this.BotonEliminar.Name = "BotonEliminar";
-            this.BotonEliminar.Size = new System.Drawing.Size(139, 50);
-            this.BotonEliminar.TabIndex = 11;
+            this.BotonEliminar.Size = new System.Drawing.Size(90, 35);
+            this.BotonEliminar.TabIndex = 9;
             this.BotonEliminar.Text = "Eliminar";
-            this.BotonEliminar.UseVisualStyleBackColor = true;
+            this.BotonEliminar.UseVisualStyleBackColor = false;
+            this.BotonEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // PictureBoxGrande
+            // label1
             // 
-            this.PictureBoxGrande.Location = new System.Drawing.Point(223, 12);
-            this.PictureBoxGrande.Name = "PictureBoxGrande";
-            this.PictureBoxGrande.Size = new System.Drawing.Size(341, 252);
-            this.PictureBoxGrande.TabIndex = 0;
-            this.PictureBoxGrande.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 214);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Imágenes adicionales:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(399, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 35);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Cerrar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // DetallesArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 617);
+            this.ClientSize = new System.Drawing.Size(559, 408);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.BotonEliminar);
             this.Controls.Add(this.BotonModificar);
             this.Controls.Add(this.lbPrecio);
@@ -158,11 +166,12 @@
             this.Controls.Add(this.lbDescripcion);
             this.Controls.Add(this.lbNombre);
             this.Controls.Add(this.lbCodigo);
-            this.Controls.Add(this.lbID);
             this.Controls.Add(this.PanelFlow);
             this.Controls.Add(this.PictureBoxGrande);
             this.Name = "DetallesArticulo";
-            this.Text = "DetallesArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Detalles del Artículo";
+            this.Load += new System.EventHandler(this.DetallesArticulo_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxGrande)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,7 +182,6 @@
 
         private System.Windows.Forms.PictureBox PictureBoxGrande;
         private System.Windows.Forms.FlowLayoutPanel PanelFlow;
-        private System.Windows.Forms.Label lbID;
         private System.Windows.Forms.Label lbCodigo;
         private System.Windows.Forms.Label lbNombre;
         private System.Windows.Forms.Label lbDescripcion;
@@ -182,5 +190,7 @@
         private System.Windows.Forms.Label lbPrecio;
         private System.Windows.Forms.Button BotonModificar;
         private System.Windows.Forms.Button BotonEliminar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -77,7 +77,6 @@ namespace TP_WinForm_equipo_e
                 if (imagenSeleccionada != null)
                 {
                     txtbURL.Text = imagenSeleccionada.ImagenUrl;
-                    // Guardás el Id en una variable para usarlo después
                     int idImagen = imagenSeleccionada.Id;
                 }
             }
@@ -102,7 +101,6 @@ namespace TP_WinForm_equipo_e
             }
             catch (Exception ex)
             {
-                // URL rota o sin conexión
 
                 pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
             }
@@ -139,17 +137,12 @@ namespace TP_WinForm_equipo_e
             
         }
 
-        
-
-        
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            // 1. Validar que todos los campos estén bien
             if (!ValidarFormulario())
-                return;   // Si algo falla, no sigue
+                return;   
 
-            // 2. Si llegó acá, todo está ok → guardar en la BD
             try
             {
 
@@ -209,12 +202,11 @@ namespace TP_WinForm_equipo_e
             ArticuloNegocio negocio = new ArticuloNegocio();
             negocio.Modificar(articulo);
 
-            // 🔑 Modificar la imagen mostrada
             var imagenSeleccionada = ArticuloSeleccionado.Imagenes.FirstOrDefault();
             if (imagenSeleccionada != null)
             {
                 Imagen imagenModificada = new Imagen();
-                imagenModificada.Id = imagenSeleccionada.Id; // el Id que ya tenía en la DB
+                imagenModificada.Id = imagenSeleccionada.Id; 
                 imagenModificada.IdArticulo = articulo.Id;
                 imagenModificada.ImagenUrl = txtbURL.Text.Trim();
 
@@ -231,7 +223,6 @@ namespace TP_WinForm_equipo_e
         private bool ValidarFormulario()
         {
             bool esValido = true;
-            // Validación de la URL
             string url = txtbURL.Text.Trim();
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -245,7 +236,7 @@ namespace TP_WinForm_equipo_e
             esValido = ValidarCampoObligatorio(txtbDescrip, 50);
             
 
-            return esValido; // Todo OK
+            return esValido; 
         }
 
         private bool ValidarCampoObligatorio(TextBox textBox, int largoCadena )
@@ -268,9 +259,6 @@ namespace TP_WinForm_equipo_e
         }
 
         
-
-
-
         private void txtbURL_TextChanged(object sender, EventArgs e)
         {
             if (txtbURL.Text != null)

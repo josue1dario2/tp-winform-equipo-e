@@ -9,7 +9,6 @@ namespace negocio
 {
     public class ImagenNegocio
     {
-        // Recupera todas las imágenes (URLs) asociadas a un artículo
         public List<Imagen> Listar(int idArticulo)
         {
             List<Imagen> imagenes = new List<Imagen>();
@@ -43,7 +42,6 @@ namespace negocio
             return imagenes;
         }
 
-        // Inserta una nueva URL asociada al Id de un artículo
         public void Agregar(Imagen imagen)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -65,7 +63,6 @@ namespace negocio
             }
         }
 
-        // Borra todas las imágenes asociadas a un artículo
         public void EliminarPorArticulo(int idArticulo)
         {
             AccesoDatos datos = new AccesoDatos();
