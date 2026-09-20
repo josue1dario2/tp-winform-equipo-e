@@ -123,7 +123,7 @@
             // 
             // BotonEliminar
             // 
-            this.BotonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.BotonEliminar.BackColor = System.Drawing.Color.White;
             this.BotonEliminar.Location = new System.Drawing.Point(98, 242);
             this.BotonEliminar.Name = "BotonEliminar";
             this.BotonEliminar.Size = new System.Drawing.Size(81, 35);

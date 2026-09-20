@@ -164,6 +164,7 @@
             this.Controls.Add(this.lbTodasLasCategorias);
             this.Controls.Add(this.lbCategoriaDetalles);
             this.Controls.Add(this.dvgListadoCategorias);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AdministrarCategorias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar Categorías";

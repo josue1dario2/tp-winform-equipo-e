@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -131,12 +132,10 @@ namespace TP_WinForm_equipo_e
             cargarImagen(url);
 
             string marca = seleccionado.Marca != null ? seleccionado.Marca.Descripcion : "Sin marca";
-            string precioStr = "$ " + seleccionado.Precio.ToString("0.##");
-            string descripcion = string.IsNullOrWhiteSpace(seleccionado.Descripcion) ? "Sin descripción" : seleccionado.Descripcion;
 
             if (lblDetalleProducto != null)
             {
-                lblDetalleProducto.Text = $"{seleccionado.Nombre}\n{marca}  |  {precioStr}\n{descripcion}";
+                lblDetalleProducto.Text = $"{marca} {seleccionado.Nombre}";
             }
         }
 

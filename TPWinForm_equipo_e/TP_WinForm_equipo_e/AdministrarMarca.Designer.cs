@@ -163,6 +163,7 @@
             this.Controls.Add(this.lbTodasLasMarcas);
             this.Controls.Add(this.lbMarcaDetalles);
             this.Controls.Add(this.dvgListadoMarcas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AdministrarMarca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar Marcas";

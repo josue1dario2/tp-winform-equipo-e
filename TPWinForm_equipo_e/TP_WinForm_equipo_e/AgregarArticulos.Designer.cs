@@ -53,7 +53,7 @@
             // 
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVolver.Location = new System.Drawing.Point(245, 276);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(2);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(79, 29);
             this.btnVolver.TabIndex = 8;
@@ -130,7 +130,7 @@
             // txtbCodigo
             // 
             this.txtbCodigo.Location = new System.Drawing.Point(122, 25);
-            this.txtbCodigo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtbCodigo.Margin = new System.Windows.Forms.Padding(2);
             this.txtbCodigo.Name = "txtbCodigo";
             this.txtbCodigo.Size = new System.Drawing.Size(190, 20);
             this.txtbCodigo.TabIndex = 0;
@@ -138,7 +138,7 @@
             // txtbNombre
             // 
             this.txtbNombre.Location = new System.Drawing.Point(122, 54);
-            this.txtbNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtbNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtbNombre.Name = "txtbNombre";
             this.txtbNombre.Size = new System.Drawing.Size(190, 20);
             this.txtbNombre.TabIndex = 1;
@@ -146,7 +146,7 @@
             // txtbDescrip
             // 
             this.txtbDescrip.Location = new System.Drawing.Point(122, 80);
-            this.txtbDescrip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtbDescrip.Margin = new System.Windows.Forms.Padding(2);
             this.txtbDescrip.Name = "txtbDescrip";
             this.txtbDescrip.Size = new System.Drawing.Size(190, 20);
             this.txtbDescrip.TabIndex = 2;
@@ -155,7 +155,7 @@
             // 
             this.cboCategorias.FormattingEnabled = true;
             this.cboCategorias.Location = new System.Drawing.Point(122, 198);
-            this.cboCategorias.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboCategorias.Margin = new System.Windows.Forms.Padding(2);
             this.cboCategorias.MaximumSize = new System.Drawing.Size(114, 0);
             this.cboCategorias.MinimumSize = new System.Drawing.Size(114, 0);
             this.cboCategorias.Name = "cboCategorias";
@@ -166,7 +166,7 @@
             // 
             this.cboMarcas.FormattingEnabled = true;
             this.cboMarcas.Location = new System.Drawing.Point(122, 170);
-            this.cboMarcas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboMarcas.Margin = new System.Windows.Forms.Padding(2);
             this.cboMarcas.MaximumSize = new System.Drawing.Size(114, 0);
             this.cboMarcas.MinimumSize = new System.Drawing.Size(114, 0);
             this.cboMarcas.Name = "cboMarcas";
@@ -187,7 +187,7 @@
             // txtbURL
             // 
             this.txtbURL.Location = new System.Drawing.Point(122, 140);
-            this.txtbURL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtbURL.Margin = new System.Windows.Forms.Padding(2);
             this.txtbURL.Name = "txtbURL";
             this.txtbURL.Size = new System.Drawing.Size(190, 20);
             this.txtbURL.TabIndex = 4;
@@ -197,7 +197,7 @@
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(134, 276);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(79, 29);
             this.btnAgregar.TabIndex = 7;
@@ -208,7 +208,7 @@
             // pictBImagArticulos
             // 
             this.pictBImagArticulos.Location = new System.Drawing.Point(347, 24);
-            this.pictBImagArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictBImagArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.pictBImagArticulos.Name = "pictBImagArticulos";
             this.pictBImagArticulos.Size = new System.Drawing.Size(260, 222);
             this.pictBImagArticulos.TabIndex = 20;
@@ -218,7 +218,7 @@
             // 
             this.numPrecio.DecimalPlaces = 2;
             this.numPrecio.Location = new System.Drawing.Point(123, 111);
-            this.numPrecio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numPrecio.Margin = new System.Windows.Forms.Padding(2);
             this.numPrecio.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -250,7 +250,8 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnVolver);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AgregarArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulos";
