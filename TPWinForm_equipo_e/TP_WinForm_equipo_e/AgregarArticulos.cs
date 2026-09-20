@@ -18,6 +18,7 @@ namespace TP_WinForm_equipo_e
         Agregar,
         Modificar
     }
+
     public partial class AgregarArticulos : Form
     {
         public ModoFormulario Modo { get; set; }
@@ -27,6 +28,13 @@ namespace TP_WinForm_equipo_e
         public AgregarArticulos()
         {
             InitializeComponent();
+
+            // Enganchamos el evento Enter de los 4 textboxes de URL
+            // para previsualizar la imagen al recibir el foco.
+            txtbURL.Enter += TxtbURL_Enter;
+            txtbURL2.Enter += TxtbURL_Enter;
+            txtbURL3.Enter += TxtbURL_Enter;
+            txtbURL4.Enter += TxtbURL_Enter;
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -43,15 +51,17 @@ namespace TP_WinForm_equipo_e
                     btnAgregar.Text = "Agregar";
                     pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
                     break;
+
                 case ModoFormulario.Modificar:
                     this.Text = "Modificar artículos";
                     btnAgregar.Text = "Modificar";
                     cargarDatosCampos();
-                    cargarImagen(txtbURL.Text.ToString());
-
+                    // Cargamos la primera imagen disponible (o default)
+                    cargarImagen(txtbURL.Text.Trim());
                     break;
             }
         }
+
         private void cargarDatosCampos()
         {
             try
@@ -59,28 +69,27 @@ namespace TP_WinForm_equipo_e
                 txtbCodigo.Text = ArticuloSeleccionado.Codigo;
                 txtbNombre.Text = ArticuloSeleccionado.Nombre;
                 txtbDescrip.Text = ArticuloSeleccionado.Descripcion;
-                if (ArticuloSeleccionado.Precio > 0)
-                {
-                    numPrecio.Value = ArticuloSeleccionado.Precio;
-                }
-                else
-                {
-                    numPrecio.Value = numPrecio.Minimum;
-                }
 
+                if (ArticuloSeleccionado.Precio > 0)
+                    numPrecio.Value = ArticuloSeleccionado.Precio;
+                else
+                    numPrecio.Value = numPrecio.Minimum;
 
                 cboMarcas.SelectedValue = ArticuloSeleccionado.Marca.Id;
                 cboCategorias.SelectedValue = ArticuloSeleccionado.Categoria.Id;
-                var imagenSeleccionada = ArticuloSeleccionado.Imagenes.FirstOrDefault();
 
-                if (imagenSeleccionada != null)
+                // Asignamos hasta 4 imágenes a los textboxes.
+                TextBox[] urls = { txtbURL, txtbURL2, txtbURL3, txtbURL4 };
+                var imagenes = ArticuloSeleccionado.Imagenes ?? new List<Imagen>();
+
+                for (int i = 0; i < urls.Length; i++)
                 {
-                    txtbURL.Text = imagenSeleccionada.ImagenUrl;
-                    int idImagen = imagenSeleccionada.Id;
+                    urls[i].Text = (i < imagenes.Count) ? imagenes[i].ImagenUrl : string.Empty;
                 }
             }
             catch (Exception)
             {
+                // Silencioso. No pongo nada acá.
             }
         }
 
@@ -93,11 +102,12 @@ namespace TP_WinForm_equipo_e
                 else
                     pictBImagArticulos.Load(url);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
             }
         }
+
         private void frmAgregarArticulos_Load(object sender, EventArgs e)
         {
             numPrecio.Minimum = 1;
@@ -165,6 +175,24 @@ namespace TP_WinForm_equipo_e
             return articulo;
         }
 
+        /// <summary>
+        /// Devuelve las URLs cargadas en los 4 textboxes, sin las vacías.
+        /// </summary>
+        private List<string> ObtenerUrlsCargadas()
+        {
+            var urls = new List<string>();
+            TextBox[] cajas = { txtbURL, txtbURL2, txtbURL3, txtbURL4 };
+
+            foreach (var tb in cajas)
+            {
+                string url = tb.Text.Trim();
+                if (!string.IsNullOrEmpty(url))
+                    urls.Add(url);
+            }
+
+            return urls;
+        }
+
         private void AgregarArticulo()
         {
             Articulo nuevo = ArmarArticulo();
@@ -172,9 +200,12 @@ namespace TP_WinForm_equipo_e
             ArticuloNegocio negocio = new ArticuloNegocio();
             int idArticulo = negocio.Agregar(nuevo);
 
-            Imagen nuevaIma = new Imagen(idArticulo, txtbURL.Text.Trim());
             ImagenNegocio imaNegocio = new ImagenNegocio();
-            imaNegocio.Agregar(nuevaIma);
+            foreach (string url in ObtenerUrlsCargadas())
+            {
+                Imagen nuevaIma = new Imagen(idArticulo, url);
+                imaNegocio.Agregar(nuevaIma);
+            }
 
             MessageBox.Show("Artículo agregado correctamente.");
         }
@@ -187,16 +218,39 @@ namespace TP_WinForm_equipo_e
             ArticuloNegocio negocio = new ArticuloNegocio();
             negocio.Modificar(articulo);
 
-            var imagenSeleccionada = ArticuloSeleccionado.Imagenes.FirstOrDefault();
-            if (imagenSeleccionada != null)
-            {
-                Imagen imagenModificada = new Imagen();
-                imagenModificada.Id = imagenSeleccionada.Id;
-                imagenModificada.IdArticulo = articulo.Id;
-                imagenModificada.ImagenUrl = txtbURL.Text.Trim();
+            // Sincronizamos las imágenes: actualizamos las existentes,
+            // insertamos las nuevas y eliminamos las sobrantes.
+            ImagenNegocio imaNegocio = new ImagenNegocio();
 
-                ImagenNegocio imaNegocio = new ImagenNegocio();
+            List<string> urlsNuevas = ObtenerUrlsCargadas();
+            List<Imagen> imagenesActuales = ArticuloSeleccionado.Imagenes ?? new List<Imagen>();
+
+            int cantidadExistente = imagenesActuales.Count;
+            int cantidadNueva = urlsNuevas.Count;
+
+            // Actualizar las que ya existían (mismo índice)
+            for (int i = 0; i < Math.Min(cantidadExistente, cantidadNueva); i++)
+            {
+                Imagen imagenModificada = new Imagen
+                {
+                    Id = imagenesActuales[i].Id,
+                    IdArticulo = articulo.Id,
+                    ImagenUrl = urlsNuevas[i]
+                };
                 imaNegocio.Modificar(imagenModificada);
+            }
+
+            // Insertar las nuevas (si el usuario agregó más URLs)
+            for (int i = cantidadExistente; i < cantidadNueva; i++)
+            {
+                Imagen nuevaIma = new Imagen(articulo.Id, urlsNuevas[i]);
+                imaNegocio.Agregar(nuevaIma);
+            }
+
+            // Eliminar las sobrantes (si el usuario quitó URLs)
+            for (int i = cantidadNueva; i < cantidadExistente; i++)
+            {
+                imaNegocio.Eliminar(imagenesActuales[i].Id);
             }
 
             MessageBox.Show("Artículo modificado correctamente.");
@@ -207,7 +261,7 @@ namespace TP_WinForm_equipo_e
             string url = txtbURL.Text.Trim();
             if (string.IsNullOrEmpty(url))
             {
-                MessageBox.Show("La URL de la imagen es obligatoria.");
+                MessageBox.Show("La primera URL de la imagen es obligatoria.");
                 txtbURL.Focus();
                 return false;
             }
@@ -242,18 +296,26 @@ namespace TP_WinForm_equipo_e
             return true;
         }
 
+        /// <summary>
+        /// Al entrar en foco a cualquiera de los 4 textboxes de URL,
+        /// previsualizamos esa imagen. Si el foco pasa a otro control,
+        /// no se modifica la imagen mostrada.
+        /// </summary>
+        private void TxtbURL_Enter(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb == null) return;
+
+            cargarImagen(tb.Text.Trim());
+        }
+
+        // Opcional: mantener el feedback en vivo mientras se pega una URL.
         private void txtbURL_TextChanged(object sender, EventArgs e)
         {
-            if (txtbURL.Text != null)
-            {
-                try
-                {
-                    pictBImagArticulos.Load(txtbURL.Text.ToString());
-                }
-                catch (Exception)
-                {
-                }
-            }
+            // Solo actualizamos si el textbox que dispara el evento tiene el foco,
+            // para no pisar la previsualización al cambiar otros controles.
+            if (sender is TextBox tb && tb.Focused)
+                cargarImagen(tb.Text.Trim());
         }
     }
 }

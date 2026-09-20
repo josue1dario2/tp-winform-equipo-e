@@ -43,12 +43,15 @@
             // 
             this.dgvArticulos.BackgroundColor = System.Drawing.Color.White;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(18, 32);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.Location = new System.Drawing.Point(24, 39);
+            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 51;
             this.dgvArticulos.RowTemplate.Height = 24;
-            this.dgvArticulos.Size = new System.Drawing.Size(653, 245);
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArticulos.Size = new System.Drawing.Size(871, 302);
             this.dgvArticulos.StandardTab = true;
             this.dgvArticulos.TabIndex = 1;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
@@ -56,11 +59,11 @@
             // btnVolver
             // 
             this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolver.Location = new System.Drawing.Point(562, 323);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVolver.MinimumSize = new System.Drawing.Size(109, 0);
+            this.btnVolver.Location = new System.Drawing.Point(749, 398);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnVolver.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(109, 27);
+            this.btnVolver.Size = new System.Drawing.Size(145, 33);
             this.btnVolver.TabIndex = 4;
             this.btnVolver.Text = "&Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -68,21 +71,21 @@
             // 
             // pbxArticulos
             // 
-            this.pbxArticulos.Location = new System.Drawing.Point(725, 32);
-            this.pbxArticulos.Margin = new System.Windows.Forms.Padding(2);
+            this.pbxArticulos.Location = new System.Drawing.Point(967, 39);
+            this.pbxArticulos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbxArticulos.Name = "pbxArticulos";
-            this.pbxArticulos.Size = new System.Drawing.Size(274, 245);
+            this.pbxArticulos.Size = new System.Drawing.Size(365, 302);
             this.pbxArticulos.TabIndex = 3;
             this.pbxArticulos.TabStop = false;
             // 
             // btnEliminar
             // 
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(284, 323);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminar.MinimumSize = new System.Drawing.Size(109, 0);
+            this.btnEliminar.Location = new System.Drawing.Point(379, 398);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminar.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(109, 27);
+            this.btnEliminar.Size = new System.Drawing.Size(145, 33);
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "&Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -91,11 +94,11 @@
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(25, 323);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregar.MinimumSize = new System.Drawing.Size(109, 0);
+            this.btnAgregar.Location = new System.Drawing.Point(33, 398);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAgregar.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(109, 27);
+            this.btnAgregar.Size = new System.Drawing.Size(145, 33);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -104,11 +107,11 @@
             // btnModificar
             // 
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(154, 323);
-            this.btnModificar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnModificar.MinimumSize = new System.Drawing.Size(109, 0);
+            this.btnModificar.Location = new System.Drawing.Point(205, 398);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnModificar.MinimumSize = new System.Drawing.Size(145, 0);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(109, 27);
+            this.btnModificar.Size = new System.Drawing.Size(145, 33);
             this.btnModificar.TabIndex = 2;
             this.btnModificar.Text = "&Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -117,16 +120,17 @@
             // lblDetalleProducto
             // 
             this.lblDetalleProducto.AutoSize = true;
-            this.lblDetalleProducto.Location = new System.Drawing.Point(820, 309);
+            this.lblDetalleProducto.Location = new System.Drawing.Point(1093, 380);
+            this.lblDetalleProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDetalleProducto.Name = "lblDetalleProducto";
-            this.lblDetalleProducto.Size = new System.Drawing.Size(0, 13);
+            this.lblDetalleProducto.Size = new System.Drawing.Size(0, 16);
             this.lblDetalleProducto.TabIndex = 7;
             // 
             // AdministrarArticulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 406);
+            this.ClientSize = new System.Drawing.Size(1347, 500);
             this.Controls.Add(this.lblDetalleProducto);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
@@ -135,7 +139,7 @@
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dgvArticulos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdministrarArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Artículos";
