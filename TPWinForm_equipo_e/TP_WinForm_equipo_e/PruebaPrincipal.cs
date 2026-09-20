@@ -181,7 +181,7 @@ namespace TP_WinForm_equipo_e
                 pictureBox.Location = new Point(0, 0);
                 pictureBox.Size = new Size(210, 137);
 
-                if (imagenes.Count > 0)
+                if (imagenes.Count > 0 && !string.IsNullOrWhiteSpace(imagenes[0].ImagenUrl))
                 {
                     try
                     {
@@ -196,6 +196,7 @@ namespace TP_WinForm_equipo_e
                 {
                     pictureBox.Image = Properties.Resources.ImagenDefault;
                 }
+
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
                 Label lbInfo = new Label();

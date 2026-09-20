@@ -25,8 +25,10 @@ namespace negocio
                     Imagen imagen = new Imagen(
                         (int)datos.Lector["Id"],
                         (int)datos.Lector["IdArticulo"],
-                        (string)datos.Lector["ImagenUrl"]
-                    );
+                        datos.Lector["ImagenUrl"] is DBNull
+                    ? null
+                    : (string)datos.Lector["ImagenUrl"]
+            );
                     imagenes.Add(imagen);
                 }
             }

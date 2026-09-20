@@ -39,7 +39,7 @@ namespace TP_WinForm_equipo_e
             ImagenNegocio imagenesNegocio = new ImagenNegocio();
             List<Imagen> imagenes = imagenesNegocio.Listar(articulo.Id);
 
-            if (imagenes.Count > 0)
+            if (imagenes.Count > 0 && !string.IsNullOrWhiteSpace(imagenes[0].ImagenUrl))
             {
                 try
                 {
@@ -54,6 +54,7 @@ namespace TP_WinForm_equipo_e
             {
                 PictureBoxGrande.Image = Properties.Resources.ImagenDefault;
             }
+
             PictureBoxGrande.SizeMode = PictureBoxSizeMode.Zoom;
 
             foreach (Imagen imagen in imagenes)
@@ -63,19 +64,23 @@ namespace TP_WinForm_equipo_e
                 picturebox.Tag = imagen;
                 picturebox.Click += Picturebox_Click;
 
-                try
+                if (imagenes.Count > 0 && !string.IsNullOrWhiteSpace(imagenes[0].ImagenUrl))
                 {
-                    picturebox.Load(imagen.ImagenUrl);
+                    try
+                    {
+                        PictureBoxGrande.Load(imagenes[0].ImagenUrl);
+                    }
+                    catch (WebException)
+                    {
+                        PictureBoxGrande.Image = Properties.Resources.ImagenDefault;
+                    }
                 }
-                catch (WebException)
+                else
                 {
-                    picturebox.Image = Properties.Resources.ImagenDefault;
+                    PictureBoxGrande.Image = Properties.Resources.ImagenDefault;
                 }
-                finally
-                {
-                    PanelFlow.Controls.Add(picturebox);
-                    picturebox.SizeMode = PictureBoxSizeMode.Zoom;
-                }
+
+                PictureBoxGrande.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
 
