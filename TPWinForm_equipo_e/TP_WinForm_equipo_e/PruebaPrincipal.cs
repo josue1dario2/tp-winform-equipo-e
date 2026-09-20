@@ -16,6 +16,8 @@ namespace TP_WinForm_equipo_e
 {
     public partial class PruebaPrincipal : Form
     {
+        private string placeholderText = "Ingrese artículo a buscar...";
+
         public PruebaPrincipal()
         {
             InitializeComponent();
@@ -23,7 +25,87 @@ namespace TP_WinForm_equipo_e
 
         private void PruebaPrincipal_Load(object sender, EventArgs e)
         {
+            txtFiltro.Text = placeholderText;
+            txtFiltro.ForeColor = Color.Gray;
+
+            btnFiltrar.Click -= btnFiltrar_Click;
+            btnFiltrar.Click += btnFiltrar_Click;
+
+            txtFiltro.MouseDown -= txtFiltro_MouseDown;
+            txtFiltro.MouseDown += txtFiltro_MouseDown;
+
+            txtPrecioMin.KeyPress += txtSoloNumeros_KeyPress;
+            txtPrecioMax.KeyPress += txtSoloNumeros_KeyPress;
+
+            CargarFiltros();
             CargarArticulos();
+        }
+
+        private void CargarFiltros()
+        {
+            try
+            {
+                MarcaNegocio marcaNegocio = new MarcaNegocio();
+                List<Marca> listaMarcas = marcaNegocio.Listar();
+                listaMarcas.Insert(0, new Marca { Id = 0, Descripcion = "Todas" });
+                cboMarca.DataSource = listaMarcas;
+                cboMarca.DisplayMember = "Descripcion";
+                cboMarca.ValueMember = "Id";
+
+                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                List<Categoria> listaCategorias = categoriaNegocio.Listar();
+                listaCategorias.Insert(0, new Categoria { Id = 0, Descripcion = "Todas" });
+                cboCategoria.DataSource = listaCategorias;
+                cboCategoria.DisplayMember = "Descripcion";
+                cboCategoria.ValueMember = "Id";
+
+                txtPrecioMin.Text = "0";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == placeholderText)
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (txtFiltro.Text == placeholderText)
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = placeholderText;
+                txtFiltro.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtSoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.')
+            {
+                e.Handled = true; 
+            }
+
+            TextBox txt = sender as TextBox;
+            if ((e.KeyChar == ',' || e.KeyChar == '.') && (txt.Text.Contains(",") || txt.Text.Contains(".")))
+            {
+                e.Handled = true;
+            }
         }
 
         private void listadoDeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -40,7 +122,7 @@ namespace TP_WinForm_equipo_e
             {
                 DetallesArticulo detalles = new DetallesArticulo(articulo);
                 detalles.ShowDialog();
-                CargarArticulos(); 
+                CargarArticulos();
             }
         }
 
@@ -60,12 +142,31 @@ namespace TP_WinForm_equipo_e
 
         private void CargarArticulos()
         {
-            flowLayoutPanel1.Controls.Clear(); 
+            flowLayoutPanel1.Controls.Clear();
 
             ArticuloNegocio negocio = new ArticuloNegocio();
             ImagenNegocio imagenNegocio = new ImagenNegocio();
 
             List<Articulo> lista = negocio.Listar();
+            MostrarArticulosEnPantalla(lista, imagenNegocio);
+        }
+
+        private void MostrarArticulosEnPantalla(List<Articulo> lista, ImagenNegocio imagenNegocio)
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            if (lista.Count == 0)
+            {
+                Label lblAviso = new Label();
+                lblAviso.Text = "No se encontraron artículos relacionados.";
+                lblAviso.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular);
+                lblAviso.ForeColor = Color.DimGray;
+                lblAviso.AutoSize = true;
+                lblAviso.Margin = new Padding(30, 40, 0, 0);
+
+                flowLayoutPanel1.Controls.Add(lblAviso);
+                return;
+            }
 
             foreach (Articulo articulo in lista)
             {
@@ -118,7 +219,43 @@ namespace TP_WinForm_equipo_e
             }
         }
 
-        private void DetallesArticulo_Load_1(object sender, EventArgs e)
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nombre = txtFiltro.Text.Trim();
+                if (nombre == placeholderText)
+                    nombre = "";
+
+                int idMarca = cboMarca.SelectedValue != null ? Convert.ToInt32(cboMarca.SelectedValue) : 0;
+                int idCategoria = cboCategoria.SelectedValue != null ? Convert.ToInt32(cboCategoria.SelectedValue) : 0;
+
+                decimal precioMin = 0;
+                decimal precioMax = 0;
+
+                if (!string.IsNullOrEmpty(txtPrecioMin.Text) && decimal.TryParse(txtPrecioMin.Text, out decimal min))
+                    precioMin = min;
+
+                if (!string.IsNullOrEmpty(txtPrecioMax.Text) && decimal.TryParse(txtPrecioMax.Text, out decimal max))
+                    precioMax = max;
+
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                List<Articulo> listaFiltrada = negocio.FiltrarAvanzado(nombre, idMarca, idCategoria, precioMin, precioMax);
+
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+                MostrarArticulosEnPantalla(listaFiltrada, imagenNegocio);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
         }
     }

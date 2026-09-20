@@ -60,8 +60,6 @@ namespace Negocio
             }
         }
 
-       
-
         public int Agregar(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -78,7 +76,7 @@ namespace Negocio
                 datos.setearParametro("@precio", nuevo.Precio);
 
                 int idArticulo = datos.obtenerId();
-                nuevo.Id = idArticulo;  
+                nuevo.Id = idArticulo;
 
                 return idArticulo;
             }
@@ -87,7 +85,6 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
-
 
         public void Eliminar(int id)
         {
@@ -107,10 +104,88 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-
-        
         }
 
+        public List<Articulo> FiltrarAvanzado(string nombre, int idMarca, int idCategoria, decimal precioMin, decimal precioMax)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, A.IdMarca, M.Descripcion AS Marca, A.IdCategoria, C.Descripcion AS Categoria FROM ARTICULOS A LEFT JOIN MARCAS M ON M.Id = A.IdMarca LEFT JOIN CATEGORIAS C ON C.Id = A.IdCategoria WHERE 1 = 1";
+
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    consulta += " AND (A.Nombre LIKE @nombre OR A.Codigo LIKE @nombre)";
+                }
+
+                if (idMarca > 0)
+                {
+                    consulta += " AND A.IdMarca = " + idMarca;
+                }
+
+                if (idCategoria > 0)
+                {
+                    consulta += " AND A.IdCategoria = " + idCategoria;
+                }
+
+                consulta += " AND A.Precio >= " + precioMin;
+                if (precioMax > 0)
+                {
+                    consulta += " AND A.Precio <= " + precioMax;
+                }
+
+                datos.setearConsulta(consulta);
+
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    datos.setearParametro("@nombre", "%" + nombre + "%");
+                }
+
+                datos.ejecutarLectura();
+
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+
+                while (datos.Lector.Read())
+                {
+                    Articulo aux = new Articulo();
+
+                    aux.Id = datos.Lector.SafeInt("Id");
+                    aux.Codigo = datos.Lector.SafeString("Codigo");
+                    aux.Nombre = datos.Lector.SafeString("Nombre");
+                    aux.Descripcion = datos.Lector.SafeString("Descripcion");
+                    aux.Precio = datos.Lector.SafeDecimal("Precio");
+
+                    if (datos.Lector["IdMarca"] != DBNull.Value)
+                    {
+                        aux.Marca = new Marca();
+                        aux.Marca.Id = datos.Lector.SafeInt("IdMarca");
+                        aux.Marca.Descripcion = datos.Lector.SafeString("Marca");
+                    }
+
+                    if (datos.Lector["IdCategoria"] != DBNull.Value)
+                    {
+                        aux.Categoria = new Categoria();
+                        aux.Categoria.Id = datos.Lector.SafeInt("IdCategoria");
+                        aux.Categoria.Descripcion = datos.Lector.SafeString("Categoria");
+                    }
+
+                    aux.Imagenes = imagenNegocio.Listar(aux.Id);
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public List<Articulo> Filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> lista = new List<Articulo>();
@@ -120,7 +195,6 @@ namespace Negocio
             {
                 string columna = "";
                 string condicion = "";
-
 
                 if (campo == "Nombre")
                 {
@@ -134,7 +208,6 @@ namespace Negocio
                 {
                     columna = "A.Precio";
                 }
-
 
                 if (criterio == "Contiene")
                 {
@@ -180,29 +253,27 @@ namespace Negocio
 
                 datos.ejecutarLectura();
 
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
 
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Codigo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.Id = datos.Lector.SafeInt("Id");
+                    aux.Codigo = datos.Lector.SafeString("Codigo");
+                    aux.Nombre = datos.Lector.SafeString("Nombre");
+                    aux.Descripcion = datos.Lector.SafeString("Descripcion");
+                    aux.Precio = datos.Lector.SafeDecimal("Precio");
 
-                    if (datos.Lector["IdMarca"] != DBNull.Value)
-                    {
-                        aux.Marca = new Marca();
-                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
-                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-                    }
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = datos.Lector.SafeInt("IdMarca");
+                    aux.Marca.Descripcion = datos.Lector.SafeString("Marca");
 
-                    if (datos.Lector["IdCategoria"] != DBNull.Value)
-                    {
-                        aux.Categoria = new Categoria();
-                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
-                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-                    }
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = datos.Lector.SafeInt("IdCategoria");
+                    aux.Categoria.Descripcion = datos.Lector.SafeString("Categoria");
+
+                    aux.Imagenes = imagenNegocio.Listar(aux.Id);
 
                     lista.Add(aux);
                 }
@@ -219,14 +290,13 @@ namespace Negocio
             }
         }
 
-
         public void Modificar(Articulo Articulo)
         {
             AccesoDatos Base = new AccesoDatos();
 
             try
             {
-                Base.setearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion,     IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE Id = @id;");
+                Base.setearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, IdMarca = @idMarca, IdCategoria = @idCategoria, Precio = @precio WHERE Id = @id;");
 
                 Base.setearParametro("@codigo", Articulo.Codigo);
                 Base.setearParametro("@nombre", Articulo.Nombre);
@@ -246,9 +316,6 @@ namespace Negocio
             {
                 Base.cerrarConexion();
             }
-
         }
-
     }
-
 }
