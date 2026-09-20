@@ -22,11 +22,16 @@ namespace TP_WinForm_equipo_e
         {
             InitializeComponent();
             this.Text = "Detalles del Artículo";
+
+            BotonEliminar.UseVisualStyleBackColor = true;
+
             articuloActual = articulo;
 
             lbCodigo.Text = "Código: " + articulo.Codigo;
             lbNombre.Text = "Nombre: " + articulo.Nombre;
-            lbDescripcion.Text = "Descripción: " + articulo.Descripcion;
+
+            tbxArticuloDescripcion.Text = articulo.Descripcion;
+
             lbMarca.Text = "Marca: " + (articulo.Marca != null ? articulo.Marca.Descripcion : "Sin marca");
             lbCategoria.Text = "Categoría: " + (articulo.Categoria != null ? articulo.Categoria.Descripcion : "Sin categoría");
             lbPrecio.Text = "Precio: $ " + articulo.Precio.ToString("N2");
@@ -140,7 +145,6 @@ namespace TP_WinForm_equipo_e
 
         private void DetallesArticulo_Load_1(object sender, EventArgs e)
         {
-
         }
         private void lbNombre_Click(object sender, EventArgs e)
         {

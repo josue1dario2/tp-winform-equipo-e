@@ -29,14 +29,15 @@
             this.BotonEliminar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.tbxArticuloDescripcion = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxGrande)).BeginInit();
             this.SuspendLayout();
             // 
             // PictureBoxGrande
             // 
-            this.PictureBoxGrande.Location = new System.Drawing.Point(12, 12);
+            this.PictureBoxGrande.Location = new System.Drawing.Point(15, 62);
             this.PictureBoxGrande.Name = "PictureBoxGrande";
-            this.PictureBoxGrande.Size = new System.Drawing.Size(220, 200);
+            this.PictureBoxGrande.Size = new System.Drawing.Size(190, 174);
             this.PictureBoxGrande.TabIndex = 0;
             this.PictureBoxGrande.TabStop = false;
             // 
@@ -52,7 +53,7 @@
             // 
             this.lbCodigo.AutoSize = true;
             this.lbCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCodigo.Location = new System.Drawing.Point(250, 15);
+            this.lbCodigo.Location = new System.Drawing.Point(251, 24);
             this.lbCodigo.Name = "lbCodigo";
             this.lbCodigo.Size = new System.Drawing.Size(56, 17);
             this.lbCodigo.TabIndex = 2;
@@ -62,7 +63,7 @@
             // 
             this.lbNombre.AutoSize = true;
             this.lbNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNombre.Location = new System.Drawing.Point(250, 45);
+            this.lbNombre.Location = new System.Drawing.Point(12, 24);
             this.lbNombre.Name = "lbNombre";
             this.lbNombre.Size = new System.Drawing.Size(71, 20);
             this.lbNombre.TabIndex = 3;
@@ -73,7 +74,7 @@
             // 
             this.lbDescripcion.AutoSize = true;
             this.lbDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescripcion.Location = new System.Drawing.Point(250, 80);
+            this.lbDescripcion.Location = new System.Drawing.Point(250, 53);
             this.lbDescripcion.Name = "lbDescripcion";
             this.lbDescripcion.Size = new System.Drawing.Size(82, 16);
             this.lbDescripcion.TabIndex = 4;
@@ -83,7 +84,7 @@
             // 
             this.lbMarca.AutoSize = true;
             this.lbMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMarca.Location = new System.Drawing.Point(250, 115);
+            this.lbMarca.Location = new System.Drawing.Point(251, 181);
             this.lbMarca.Name = "lbMarca";
             this.lbMarca.Size = new System.Drawing.Size(48, 16);
             this.lbMarca.TabIndex = 5;
@@ -93,7 +94,7 @@
             // 
             this.lbCategoria.AutoSize = true;
             this.lbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCategoria.Location = new System.Drawing.Point(250, 145);
+            this.lbCategoria.Location = new System.Drawing.Point(251, 211);
             this.lbCategoria.Name = "lbCategoria";
             this.lbCategoria.Size = new System.Drawing.Size(69, 16);
             this.lbCategoria.TabIndex = 6;
@@ -104,7 +105,7 @@
             this.lbPrecio.AutoSize = true;
             this.lbPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPrecio.ForeColor = System.Drawing.Color.Green;
-            this.lbPrecio.Location = new System.Drawing.Point(250, 175);
+            this.lbPrecio.Location = new System.Drawing.Point(335, 257);
             this.lbPrecio.Name = "lbPrecio";
             this.lbPrecio.Size = new System.Drawing.Size(59, 20);
             this.lbPrecio.TabIndex = 7;
@@ -112,9 +113,9 @@
             // 
             // BotonModificar
             // 
-            this.BotonModificar.Location = new System.Drawing.Point(158, 238);
+            this.BotonModificar.Location = new System.Drawing.Point(15, 242);
             this.BotonModificar.Name = "BotonModificar";
-            this.BotonModificar.Size = new System.Drawing.Size(90, 35);
+            this.BotonModificar.Size = new System.Drawing.Size(77, 35);
             this.BotonModificar.TabIndex = 8;
             this.BotonModificar.Text = "Modificar";
             this.BotonModificar.UseVisualStyleBackColor = true;
@@ -123,9 +124,9 @@
             // BotonEliminar
             // 
             this.BotonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.BotonEliminar.Location = new System.Drawing.Point(276, 238);
+            this.BotonEliminar.Location = new System.Drawing.Point(98, 242);
             this.BotonEliminar.Name = "BotonEliminar";
-            this.BotonEliminar.Size = new System.Drawing.Size(90, 35);
+            this.BotonEliminar.Size = new System.Drawing.Size(81, 35);
             this.BotonEliminar.TabIndex = 9;
             this.BotonEliminar.Text = "Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = false;
@@ -134,7 +135,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 214);
+            this.label1.Location = new System.Drawing.Point(12, 289);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 13);
             this.label1.TabIndex = 10;
@@ -143,19 +144,31 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(399, 238);
+            this.button1.Location = new System.Drawing.Point(185, 242);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 35);
+            this.button1.Size = new System.Drawing.Size(78, 35);
             this.button1.TabIndex = 11;
             this.button1.Text = "Cerrar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tbxArticuloDescripcion
+            // 
+            this.tbxArticuloDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxArticuloDescripcion.Location = new System.Drawing.Point(253, 72);
+            this.tbxArticuloDescripcion.Multiline = true;
+            this.tbxArticuloDescripcion.Name = "tbxArticuloDescripcion";
+            this.tbxArticuloDescripcion.ReadOnly = true;
+            this.tbxArticuloDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbxArticuloDescripcion.Size = new System.Drawing.Size(282, 95);
+            this.tbxArticuloDescripcion.TabIndex = 12;
+            // 
             // DetallesArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 408);
+            this.ClientSize = new System.Drawing.Size(553, 408);
+            this.Controls.Add(this.tbxArticuloDescripcion);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BotonEliminar);
@@ -192,5 +205,6 @@
         private System.Windows.Forms.Button BotonEliminar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbxArticuloDescripcion;
     }
 }

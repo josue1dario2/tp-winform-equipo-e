@@ -56,7 +56,6 @@ namespace TP_WinForm_equipo_e
         {
             try
             {
-                
                 txtbCodigo.Text = ArticuloSeleccionado.Codigo;
                 txtbNombre.Text = ArticuloSeleccionado.Nombre;
                 txtbDescrip.Text = ArticuloSeleccionado.Descripcion;
@@ -82,12 +81,7 @@ namespace TP_WinForm_equipo_e
             }
             catch (Exception)
             {
-
-           
             }
-            
-            
-
         }
 
         private void cargarImagen(string url)
@@ -101,13 +95,11 @@ namespace TP_WinForm_equipo_e
             }
             catch (Exception ex)
             {
-
                 pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
             }
         }
         private void frmAgregarArticulos_Load(object sender, EventArgs e)
         {
-            
             numPrecio.Minimum = 1;
             MarcaNegocio negocioMar = new MarcaNegocio();
             List<Marca> listaMarcas = negocioMar.Listar();
@@ -117,7 +109,6 @@ namespace TP_WinForm_equipo_e
 
             try
             {
-                //pictBImagArticulos.Image = Properties.Resources.ImagenDefault;
                 pictBImagArticulos.SizeMode = PictureBoxSizeMode.Zoom;
                 cboMarcas.DataSource = listaMarcas;
                 cboMarcas.DisplayMember = "Descripcion";
@@ -127,25 +118,20 @@ namespace TP_WinForm_equipo_e
                 cboCategorias.ValueMember = "Id";
 
                 settearControles();
-
             }
             catch (Exception)
             {
-
                 throw;
             }
-            
         }
-
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (!ValidarFormulario())
-                return;   
+                return;
 
             try
             {
-
                 switch (Modo)
                 {
                     case ModoFormulario.Agregar:
@@ -153,10 +139,9 @@ namespace TP_WinForm_equipo_e
                         break;
                     case ModoFormulario.Modificar:
                         ModificarArticulo();
-
                         break;
                 }
-                
+
                 this.Close();
             }
             catch (Exception ex)
@@ -206,7 +191,7 @@ namespace TP_WinForm_equipo_e
             if (imagenSeleccionada != null)
             {
                 Imagen imagenModificada = new Imagen();
-                imagenModificada.Id = imagenSeleccionada.Id; 
+                imagenModificada.Id = imagenSeleccionada.Id;
                 imagenModificada.IdArticulo = articulo.Id;
                 imagenModificada.ImagenUrl = txtbURL.Text.Trim();
 
@@ -217,48 +202,46 @@ namespace TP_WinForm_equipo_e
             MessageBox.Show("Artículo modificado correctamente.");
         }
 
-
-        
-        
         private bool ValidarFormulario()
         {
-            bool esValido = true;
             string url = txtbURL.Text.Trim();
-            if (string.IsNullOrWhiteSpace(url))
+            if (string.IsNullOrEmpty(url))
             {
                 MessageBox.Show("La URL de la imagen es obligatoria.");
                 txtbURL.Focus();
                 return false;
             }
 
-            esValido = ValidarCampoObligatorio(txtbCodigo, 50);
-            esValido = ValidarCampoObligatorio(txtbNombre, 50);
-            esValido = ValidarCampoObligatorio(txtbDescrip, 50);
-            
+            if (!ValidarCampoObligatorio(txtbCodigo, 50, "código")) return false;
+            if (!ValidarCampoObligatorio(txtbNombre, 50, "nombre")) return false;
+            if (!ValidarCampoObligatorio(txtbDescrip, 150, "descripción")) return false;
 
-            return esValido; 
+            return true;
         }
 
-        private bool ValidarCampoObligatorio(TextBox textBox, int largoCadena )
+        private bool ValidarCampoObligatorio(TextBox textBox, int largoCadena, string nombreCampo)
         {
-            string mensajeError = $"El campo {textBox.Name} es obligatorio";
             if (string.IsNullOrWhiteSpace(textBox.Text))
             {
-                MessageBox.Show(mensajeError, "Validación",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"El campo {nombreCampo} es obligatorio", "Validación",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox.Focus();
                 return false;
             }
             if (textBox.Text.Length > largoCadena)
             {
-                MessageBox.Show("El texto es muy grande","Validación",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                string mensaje = (nombreCampo == "descripción")
+                    ? "El texto de la descripción es muy grande."
+                    : $"El texto del {nombreCampo} es muy grande.";
+
+                MessageBox.Show(mensaje, "Validación",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox.Focus();
                 return false;
             }
             return true;
         }
 
-        
         private void txtbURL_TextChanged(object sender, EventArgs e)
         {
             if (txtbURL.Text != null)
@@ -269,12 +252,8 @@ namespace TP_WinForm_equipo_e
                 }
                 catch (Exception)
                 {
-
-                    
                 }
             }
         }
-
-        
     }
 }
