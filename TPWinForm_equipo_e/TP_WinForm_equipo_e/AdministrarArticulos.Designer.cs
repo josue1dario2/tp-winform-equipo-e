@@ -62,7 +62,7 @@
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(109, 27);
             this.btnVolver.TabIndex = 4;
-            this.btnVolver.Text = "Volver";
+            this.btnVolver.Text = "&Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
@@ -84,7 +84,7 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(109, 27);
             this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Text = "&Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -97,7 +97,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(109, 27);
             this.btnAgregar.TabIndex = 1;
-            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -110,7 +110,7 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(109, 27);
             this.btnModificar.TabIndex = 2;
-            this.btnModificar.Text = "Modificar";
+            this.btnModificar.Text = "&Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 

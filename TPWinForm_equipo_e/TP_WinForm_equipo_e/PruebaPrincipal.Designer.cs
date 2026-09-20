@@ -65,7 +65,7 @@
             this.listadoDeToolStripMenuItem});
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
             this.articulosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.articulosToolStripMenuItem.Text = "Artículos";
+            this.articulosToolStripMenuItem.Text = "&Artículos";
             // 
             // listadoDeToolStripMenuItem
             // 
@@ -80,7 +80,7 @@
             this.agregarMarcaToolStripMenuItem});
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
             this.marcasToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.marcasToolStripMenuItem.Text = "Marcas";
+            this.marcasToolStripMenuItem.Text = "&Marcas";
             // 
             // agregarMarcaToolStripMenuItem
             // 
@@ -95,7 +95,7 @@
             this.listadoDeCategoriasToolStripMenuItem});
             this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
             this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.categoriasToolStripMenuItem.Text = "Categorías";
+            this.categoriasToolStripMenuItem.Text = "&Categorías";
             // 
             // listadoDeCategoriasToolStripMenuItem
             // 
@@ -188,7 +188,7 @@
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(115, 39);
             this.btnFiltrar.TabIndex = 5;
-            this.btnFiltrar.Text = "Buscar";
+            this.btnFiltrar.Text = "&Buscar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.button1_Click);
             // 

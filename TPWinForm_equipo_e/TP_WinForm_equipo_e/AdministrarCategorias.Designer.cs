@@ -49,7 +49,7 @@
             this.BotonEliminar.Name = "BotonEliminar";
             this.BotonEliminar.Size = new System.Drawing.Size(88, 30);
             this.BotonEliminar.TabIndex = 5;
-            this.BotonEliminar.Text = "Eliminar";
+            this.BotonEliminar.Text = "&Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = true;
             this.BotonEliminar.Click += new System.EventHandler(this.BotonEliminar_Click);
             // 
@@ -60,7 +60,7 @@
             this.BotonModificar.Name = "BotonModificar";
             this.BotonModificar.Size = new System.Drawing.Size(88, 30);
             this.BotonModificar.TabIndex = 4;
-            this.BotonModificar.Text = "Modificar";
+            this.BotonModificar.Text = "&Modificar";
             this.BotonModificar.UseVisualStyleBackColor = true;
             this.BotonModificar.Click += new System.EventHandler(this.BotonModificar_Click);
             // 
@@ -78,7 +78,7 @@
             this.botonAgregarCategoria.Name = "botonAgregarCategoria";
             this.botonAgregarCategoria.Size = new System.Drawing.Size(88, 30);
             this.botonAgregarCategoria.TabIndex = 1;
-            this.botonAgregarCategoria.Text = "Agregar";
+            this.botonAgregarCategoria.Text = "&Agregar";
             this.botonAgregarCategoria.UseVisualStyleBackColor = true;
             this.botonAgregarCategoria.Click += new System.EventHandler(this.botonAgregarCategoria_Click);
             // 
@@ -136,7 +136,7 @@
             this.btnVolverCategorias.Name = "btnVolverCategorias";
             this.btnVolverCategorias.Size = new System.Drawing.Size(80, 29);
             this.btnVolverCategorias.TabIndex = 6;
-            this.btnVolverCategorias.Text = "Volver";
+            this.btnVolverCategorias.Text = "&Volver";
             this.btnVolverCategorias.UseVisualStyleBackColor = true;
             this.btnVolverCategorias.Click += new System.EventHandler(this.btnVolverCategorias_Click);
             // 

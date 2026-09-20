@@ -113,22 +113,24 @@
             // 
             // BotonModificar
             // 
+            this.BotonModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonModificar.Location = new System.Drawing.Point(15, 242);
             this.BotonModificar.Name = "BotonModificar";
             this.BotonModificar.Size = new System.Drawing.Size(77, 35);
             this.BotonModificar.TabIndex = 8;
-            this.BotonModificar.Text = "Modificar";
+            this.BotonModificar.Text = "&Modificar";
             this.BotonModificar.UseVisualStyleBackColor = true;
             this.BotonModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // BotonEliminar
             // 
             this.BotonEliminar.BackColor = System.Drawing.Color.White;
+            this.BotonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BotonEliminar.Location = new System.Drawing.Point(98, 242);
             this.BotonEliminar.Name = "BotonEliminar";
             this.BotonEliminar.Size = new System.Drawing.Size(81, 35);
             this.BotonEliminar.TabIndex = 9;
-            this.BotonEliminar.Text = "Eliminar";
+            this.BotonEliminar.Text = "&Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = false;
             this.BotonEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -144,11 +146,12 @@
             // 
             // button1
             // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(185, 242);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 35);
             this.button1.TabIndex = 11;
-            this.button1.Text = "Cerrar";
+            this.button1.Text = "&Cerrar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

@@ -95,7 +95,7 @@
             this.botonAgregarMarca.Name = "botonAgregarMarca";
             this.botonAgregarMarca.Size = new System.Drawing.Size(88, 30);
             this.botonAgregarMarca.TabIndex = 1;
-            this.botonAgregarMarca.Text = "Agregar";
+            this.botonAgregarMarca.Text = "&Agregar";
             this.botonAgregarMarca.UseVisualStyleBackColor = true;
             this.botonAgregarMarca.Click += new System.EventHandler(this.botonAgregarMarca_Click);
             // 
@@ -113,7 +113,7 @@
             this.BotonModificar.Name = "BotonModificar";
             this.BotonModificar.Size = new System.Drawing.Size(88, 30);
             this.BotonModificar.TabIndex = 4;
-            this.BotonModificar.Text = "Modificar";
+            this.BotonModificar.Text = "&Modificar";
             this.BotonModificar.UseVisualStyleBackColor = true;
             this.BotonModificar.Click += new System.EventHandler(this.BotonModificar_Click);
             // 
@@ -124,7 +124,7 @@
             this.BotonEliminar.Name = "BotonEliminar";
             this.BotonEliminar.Size = new System.Drawing.Size(88, 30);
             this.BotonEliminar.TabIndex = 5;
-            this.BotonEliminar.Text = "Eliminar";
+            this.BotonEliminar.Text = "&Eliminar";
             this.BotonEliminar.UseVisualStyleBackColor = true;
             this.BotonEliminar.Click += new System.EventHandler(this.BotonEliminar_Click);
             // 
@@ -135,7 +135,7 @@
             this.btnVolverMarcas.Name = "btnVolverMarcas";
             this.btnVolverMarcas.Size = new System.Drawing.Size(77, 29);
             this.btnVolverMarcas.TabIndex = 6;
-            this.btnVolverMarcas.Text = "Volver";
+            this.btnVolverMarcas.Text = "&Volver";
             this.btnVolverMarcas.UseVisualStyleBackColor = true;
             this.btnVolverMarcas.Click += new System.EventHandler(this.button1_Click);
             // 
